@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NamasteFit - Premier Fitness Club for Indians</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #e63946;
+            --secondary: #1d3557;
+            --accent: #ff9e00;
+            --light: #f1faee;
+            --dark: #0d1b2a;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header & Navigation */
+        .skip-link {
+            position: absolute;
+            left: -999px;
+            top: auto;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+        }
+
+        .skip-link:focus {
+            left: 20px;
+            top: 20px;
+            width: auto;
+            height: auto;
+            padding: 10px 15px;
+            background: var(--dark);
+            color: white;
+            border-radius: 6px;
+            z-index: 2000;
+        }
+
+        header {
+            background-color: white;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: saturate(120%) blur(6px);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 0;
+            gap: 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo h1 {
+            color: var(--primary);
+            font-size: 1.6rem;
+            margin: 0;
+            line-height: 1;
+            letter-spacing: 0.5px;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .logo .tagline {
+            display: block;
+            font-size: 0.8rem;
+            color: #777;
+            margin-top: 2px;
+            font-weight: 600;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            gap: 24px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            padding: 8px 6px;
+            transition: color 0.25s, transform 0.18s;
+            border-radius: 6px;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary);
+            transform: translateY(-2px);
+            background: rgba(230,57,70,0.04);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark);
+            background: none;
+            border: none;
+            padding: 6px;
+        }
+
+        .cta-header {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-weight: 700;
+            text-decoration: none;
+            margin-left: 8px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .cta-header:hover { transform: translateY(-3px); box-shadow: 0 6px 18px rgba(201,33,44,0.15); }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+        
+        .cta-button:hover {
+            background-color: #c1121f;
+            transform: translateY(-3px);
+        }
+        
+        /* Section Styling */
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            color: var(--secondary);
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 4px;
+            background-color: var(--primary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-title p {
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Class Schedule */
+        .schedule-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .schedule-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .schedule-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .schedule-header {
+            background-color: var(--secondary);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .schedule-header h3 {
+            font-size: 1.5rem;
+        }
+        
+        .schedule-body {
+            padding: 20px;
+        }
+        
+        .schedule-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .schedule-item:last-child {
+            border-bottom: none;
+        }
+        
+        /* Trainer Profiles */
+        .trainers-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .trainer-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+        
+        .trainer-img {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .trainer-info {
+            padding: 20px;
+        }
+        
+        .trainer-info h3 {
+            margin-bottom: 10px;
+            color: var(--secondary);
+        }
+        
+        .trainer-info p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .specialty {
+            display: inline-block;
+            background-color: var(--light);
+            color: var(--primary);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        /* Membership Plans */
+        .plans-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .plan-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+            transition: transform 0.3s;
+        }
+        
+        .plan-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .plan-card.popular {
+            border: 2px solid var(--accent);
+        }
+        
+        .popular-tag {
+            position: absolute;
+            top: 20px;
+            right: -30px;
+            background-color: var(--accent);
+            color: white;
+            padding: 5px 30px;
+            transform: rotate(45deg);
+            font-weight: 600;
+            font-size: 0.8rem;
+        }
+        
+        .plan-header {
+            background-color: var(--secondary);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        
+        .plan-header h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+        
+        .price {
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+        
+        .price span {
+            font-size: 1rem;
+            font-weight: normal;
+        }
+        
+        .plan-body {
+            padding: 30px;
+        }
+        
+        .plan-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+        
+        .plan-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .plan-features li i {
+            color: var(--primary);
+            margin-right: 10px;
+        }
+        
+        /* Blog Section */
+        .blog-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .blog-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .blog-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .blog-content {
+            padding: 25px;
+        }
+        
+        .blog-content h3 {
+            margin-bottom: 15px;
+            color: var(--secondary);
+        }
+        
+        .blog-meta {
+            display: flex;
+            justify-content: space-between;
+            color: #888;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        
+        .read-more {
+            display: inline-block;
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+            margin-top: 10px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--secondary);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo h2 {
+            color: white;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+        
+        .footer-logo span {
+            color: var(--primary);
+        }
+        
+        .footer-links h3, .footer-contact h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .footer-links h3::after, .footer-contact h3::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 3px;
+            background-color: var(--primary);
+            bottom: -8px;
+            left: 0;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links ul li a:hover {
+            color: var(--primary);
+        }
+        
+        .footer-contact p {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-contact i {
+            margin-right: 10px;
+            color: var(--primary);
+        }
+        
+        .social-icons {
+            display: flex;
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            margin-right: 10px;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+            
+            nav ul {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .mobile-nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+            }
+            
+            .mobile-nav.active {
+                display: block;
+            }
+            
+            .mobile-nav ul {
+                list-style: none;
+            }
+            
+            .mobile-nav ul li {
+                margin-bottom: 15px;
+            }
+            
+            .mobile-nav ul li a {
+                text-decoration: none;
+                color: var(--dark);
+                font-weight: 600;
+                font-size: 1.1rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                padding: 80px 0;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a class="skip-link" href="#home">Skip to content</a>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container header-container">
+            <div class="logo" aria-hidden="false">
+                <i class="fas fa-dumbbell" style="font-size: 2rem; color: var(--primary);"></i>
+                <div>
+                    <h1>Namaste<span>Fit</span></h1>
+                    <span class="tagline">Premier Fitness Club for Indians</span>
+                </div>
+            </div>
+
+            <div style="display:flex; align-items:center; gap:12px;">
+                <nav aria-label="Primary Navigation">
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#schedule">Classes</a></li>
+                        <li><a href="#trainers">Trainers</a></li>
+                        <li><a href="#membership">Membership</a></li>
+                        <li><a href="#blog">Blog</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+
+                <a href="#membership" class="cta-header" aria-label="Join NamasteFit">Join</a>
+
+                <button class="mobile-menu-btn" aria-expanded="false" aria-controls="mobileNav" aria-label="Open mobile menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <div class="mobile-nav" id="mobileNav">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#schedule">Classes</a></li>
+                <li><a href="#trainers">Trainers</a></li>
+                <li><a href="#membership">Membership</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#membership" class="cta-header" style="display:inline-block; margin-top:10px;">Join</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h2>Transform Your Body, Transform Your Life</h2>
+            <p>NamasteFit brings you world-class fitness facilities with an Indian touch. From yoga to high-intensity workouts, we have something for everyone looking to lead a healthier lifestyle.</p>
+            <a href="#membership" class="cta-button">Join Today</a>
+        </div>
+    </section>
+
+    <!-- Class Schedule Section -->
+    <section id="schedule">
+        <div class="container">
+            <div class="section-title">
+                <h2>Class Schedule</h2>
+                <p>We offer a variety of classes throughout the week designed to cater to all fitness levels and preferences.</p>
+            </div>
+            
+            <div class="schedule-container">
+                <div class="schedule-card">
+                    <div class="schedule-header">
+                        <h3>Morning Classes</h3>
+                        <p>6:00 AM - 12:00 PM</p>
+                    </div>
+                    <div class="schedule-body">
+                        <div class="schedule-item">
+                            <span>Yoga & Pranayama</span>
+                            <span>6:00 AM</span>
+                        </div>
+                        <div class="schedule-item">
+                            <span>Zumba</span>
+                            <span>7:30 AM</span>
+                        </div>
+                        <div class="schedule-item">
+                            <span>Strength Training</span>
+                            <span>9:00 AM</span>
+                        </div>
+                        <div class="schedule-item">
+                            <span>Pilates</span>
+                            <span>10:30 AM</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="schedule-card">
+                    <div class="schedule-header">
+                        <h3>Evening Classes</h3>
+                        <p>4:00 PM - 9:00 PM</p>
+                    </div>
+                    <div class="schedule-body">
+                        <div class="schedule-item">
+                            <span>Cardio Kickboxing</span>
+                            <span>4:00 PM</span>
+                        </div>
+                        <div class="schedule-item">
+                            <span>Bollywood Dance</span>
+                            <span>5:30 PM</span>
+                        </div>
+                        <div class="schedule-item">
+                            <span>Weight Training</span>
+                            <span>7:00 PM</span>
+                        </div>
+                        <div class="schedule-item">
+                            <span>Meditation</span>
+                            <span>8:30 PM</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="schedule-card">
+                    <div class="schedule-header">
+                        <h3>Weekend Specials</h3>
+                        <p>Saturday & Sunday</p>
+                    </div>
+                    <div class="schedule-body">
+                        <div class="schedule-item">
+                            <span>Family Yoga</span>
+                            <span>7:00 AM</span>
+                        </div>
+                        <div class="schedule-item">
+                            <span>HIIT Workout</span>
+                            <span>9:00 AM</span>
+                        </div>
+                        <div class="schedule-item">
+                            <span>Nutrition Workshop</span>
+                            <span>11:00 AM</span>
+                        </div>
+                        <div class="schedule-item">
+                            <span>Senior Fitness</span>
+                            <span>4:00 PM</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trainer Profiles Section -->
+    <section id="trainers" style="background-color: var(--light);">
+        <div class="container">
+            <div class="section-title">
+                <h2>Meet Our Trainers</h2>
+                <p>Our certified trainers are here to guide you on your fitness journey with personalized attention and expertise.</p>
+            </div>
+            
+            <div class="trainers-container">
+                <div class="trainer-card">
+                    <div class="trainer-img" style="background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');"></div>
+                    <div class="trainer-info">
+                        <h3>Rajesh Kumar</h3>
+                        <p>Yoga & Meditation Expert</p>
+                        <p>With over 10 years of experience in traditional Indian yoga practices, Rajesh specializes in therapeutic yoga for back pain and stress management.</p>
+                        <div class="specialty">Yoga, Pranayama, Meditation</div>
+                    </div>
+                </div>
+                
+                <div class="trainer-card">
+                    <div class="trainer-img" style="background-image: url('https://images.unsplash.com/photo-1594381898411-846e7d193883?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80');"></div>
+                    <div class="trainer-info">
+                        <h3>Priya Sharma</h3>
+                        <p>Strength & Conditioning Coach</p>
+                        <p>Former national-level weightlifter, Priya helps clients build strength and endurance with a focus on proper form and technique.</p>
+                        <div class="specialty">Weight Training, HIIT, Functional Fitness</div>
+                    </div>
+                </div>
+                
+                <div class="trainer-card">
+                    <div class="trainer-img" style="background-image: url('https://images.unsplash.com/photo-1594381898411-846e7d193883?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80');"></div>
+                    <div class="trainer-info">
+                        <h3>Ananya Singh</h3>
+                        <p>Dance Fitness Specialist</p>
+                        <p>Ananya brings energy and joy to her Bollywood and Zumba classes, making workouts fun while burning calories effectively.</p>
+                        <div class="specialty">Zumba, Bollywood Dance, Cardio</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Membership Plans Section -->
+    <section id="membership">
+        <div class="container">
+            <div class="section-title">
+                <h2>Membership Plans</h2>
+                <p>Choose a plan that fits your fitness goals and budget. All plans include access to basic equipment and locker rooms.</p>
+            </div>
+            
+            <div class="plans-container">
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3>Basic</h3>
+                        <div class="price">₹999<span>/month</span></div>
+                    </div>
+                    <div class="plan-body">
+                        <ul class="plan-features">
+                            <li><i class="fas fa-check"></i> Gym Access (5 AM - 10 PM)</li>
+                            <li><i class="fas fa-check"></i> Locker Room Access</li>
+                            <li><i class="fas fa-check"></i> 2 Group Classes per week</li>
+                            <li><i class="fas fa-times"></i> Personal Training</li>
+                            <li><i class="fas fa-times"></i> Diet Consultation</li>
+                        </ul>
+                        <a href="#" class="cta-button" style="display: block; text-align: center;">Choose Plan</a>
+                    </div>
+                </div>
+                
+                <div class="plan-card popular">
+                    <div class="popular-tag">Most Popular</div>
+                    <div class="plan-header">
+                        <h3>Premium</h3>
+                        <div class="price">₹1999<span>/month</span></div>
+                    </div>
+                    <div class="plan-body">
+                        <ul class="plan-features">
+                            <li><i class="fas fa-check"></i> 24/7 Gym Access</li>
+                            <li><i class="fas fa-check"></i> All Group Classes Unlimited</li>
+                            <li><i class="fas fa-check"></i> 2 Personal Training Sessions</li>
+                            <li><i class="fas fa-check"></i> Monthly Diet Consultation</li>
+                            <li><i class="fas fa-check"></i> Steam & Sauna Access</li>
+                        </ul>
+                        <a href="#" class="cta-button" style="display: block; text-align: center;">Choose Plan</a>
+                    </div>
+                </div>
+                
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3>Family</h3>
+                        <div class="price">₹3499<span>/month</span></div>
+                    </div>
+                    <div class="plan-body">
+                        <ul class="plan-features">
+                            <li><i class="fas fa-check"></i> Everything in Premium</li>
+                            <li><i class="fas fa-check"></i> For up to 4 Family Members</li>
+                            <li><i class="fas fa-check"></i> Kids Fitness Classes</li>
+                            <li><i class="fas fa-check"></i> Family Nutrition Workshop</li>
+                            <li><i class="fas fa-check"></i> 25% Off on Merchandise</li>
+                        </ul>
+                        <a href="#" class="cta-button" style="display: block; text-align: center;">Choose Plan</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" style="background-color: var(--light);">
+        <div class="container">
+            <div class="section-title">
+                <h2>Fitness Tips & Blog</h2>
+                <p>Stay updated with the latest fitness trends, nutrition advice, and wellness tips from our experts.</p>
+            </div>
+            
+            <div class="blog-container">
+                <div class="blog-card">
+                    <div class="blog-img" style="background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');"></div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> June 15, 2023</span>
+                            <span><i class="far fa-user"></i> By Rajesh Kumar</span>
+                        </div>
+                        <h3>5 Yoga Asanas for Office Workers</h3>
+                        <p>If you spend long hours at a desk, these yoga poses can help relieve back pain, improve posture, and reduce stress.</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="blog-card">
+                    <div class="blog-img" style="background-image: url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');"></div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> June 10, 2023</span>
+                            <span><i class="far fa-user"></i> By Priya Sharma</span>
+                        </div>
+                        <h3>Indian Diet for Muscle Building</h3>
+                        <p>Discover how traditional Indian foods like dal, paneer, and sprouts can help you build lean muscle effectively.</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="blog-card">
+                    <div class="blog-img" style="background-image: url('https://images.unsplash.com/photo-1536922246289-88c42f957773?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2106&q=80');"></div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> June 5, 2023</span>
+                            <span><i class="far fa-user"></i> By Ananya Singh</span>
+                        </div>
+                        <h3>Bollywood Dance for Weight Loss</h3>
+                        <p>Learn how Bollywood dance routines can be an enjoyable way to burn calories and improve cardiovascular health.</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-logo">
+                    <h2>Namaste<span>Fit</span></h2>
+                    <p>Your journey to a healthier lifestyle begins here. We combine traditional Indian wellness practices with modern fitness techniques.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#schedule">Class Schedule</a></li>
+                        <li><a href="#trainers">Trainers</a></li>
+                        <li><a href="#membership">Membership Plans</a></li>
+                        <li><a href="#blog">Fitness Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Fitness Street, Mumbai, Maharashtra 400001</p>
+                    <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+                    <p><i class="fas fa-envelope"></i> info@namastefit.com</p>
+                    <p><i class="fas fa-clock"></i> Monday - Sunday: 5:00 AM - 11:00 PM</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 NamasteFit. All Rights Reserved. | Designed specifically for the Indian fitness community</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle (improved): toggle active state, aria, and icon
+        const mobileBtn = document.querySelector('.mobile-menu-btn');
+        const mobileNav = document.querySelector('.mobile-nav');
+        const mobileIcon = mobileBtn.querySelector('i');
+
+        mobileBtn.addEventListener('click', function() {
+            const isActive = mobileNav.classList.toggle('active');
+            mobileBtn.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+            if (isActive) {
+                mobileIcon.classList.remove('fa-bars');
+                mobileIcon.classList.add('fa-times');
+            } else {
+                mobileIcon.classList.remove('fa-times');
+                mobileIcon.classList.add('fa-bars');
+            }
+        });
+
+        // Close mobile menu when clicking on a link and restore icon
+        document.querySelectorAll('.mobile-nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileNav.classList.remove('active');
+                mobileBtn.setAttribute('aria-expanded', 'false');
+                mobileIcon.classList.remove('fa-times');
+                mobileIcon.classList.add('fa-bars');
+            });
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a, .mobile-nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Highlight active section in navigation
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a, .mobile-nav a');
+            
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

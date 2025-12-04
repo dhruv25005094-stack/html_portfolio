@@ -1,0 +1,1706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GlobalMart - Shop for Clothes, Electronics & Handmade Crafts</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2a2a72;
+            --secondary: #ff9a00;
+            --accent: #e63946;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #28a745;
+            --gray: #6c757d;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --border-radius: 8px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fb;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-top {
+            background-color: var(--primary);
+            color: white;
+            padding: 10px 0;
+            font-size: 0.9rem;
+        }
+
+        .header-top .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .currency-selector, .country-selector {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        select {
+            padding: 5px 10px;
+            border-radius: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        .main-header {
+            padding: 15px 0;
+        }
+
+        .main-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .logo i {
+            color: var(--secondary);
+        }
+
+        .search-bar {
+            flex: 1;
+            max-width: 500px;
+            margin: 0 30px;
+            position: relative;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 12px 20px;
+            border-radius: 30px;
+            border: 1px solid #ddd;
+            font-size: 1rem;
+        }
+
+        .search-bar button {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            padding: 8px 20px;
+            cursor: pointer;
+        }
+
+        .header-icons {
+            display: flex;
+            gap: 25px;
+            font-size: 1.3rem;
+        }
+
+        .header-icons a {
+            color: var(--dark);
+            position: relative;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--accent);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        nav {
+            background-color: var(--light);
+            border-top: 1px solid #eee;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            padding: 15px 0;
+        }
+
+        .nav-links li {
+            margin-right: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            background-color: #e68900;
+        }
+
+        /* Products Section */
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .category-filters {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .category-btn {
+            padding: 10px 25px;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .category-btn.active, .category-btn:hover {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .product-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .product-card:hover .product-img img {
+            transform: scale(1.05);
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-category {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .product-name {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .product-price {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .current-price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .original-price {
+            font-size: 1rem;
+            color: var(--gray);
+            text-decoration: line-through;
+        }
+
+        .product-rating {
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+
+        .add-to-cart {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .add-to-cart:hover {
+            background-color: #1a1a5a;
+        }
+
+        /* Cart Modal */
+        .cart-modal {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            max-width: 450px;
+            height: 100%;
+            background-color: white;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            z-index: 1100;
+            transition: right 0.4s ease-in-out;
+            overflow-y: auto;
+        }
+
+        .cart-modal.active {
+            right: 0;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cart-header h3 {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gray);
+        }
+
+        .cart-items {
+            padding: 20px;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 15px;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cart-item-img {
+            width: 80px;
+            height: 80px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+
+        .cart-item-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .cart-item-details {
+            flex: 1;
+        }
+
+        .cart-item-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .cart-item-price {
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .cart-item-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .quantity-btn {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 1px solid #ddd;
+            background-color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cart-item-quantity {
+            font-weight: 600;
+            min-width: 30px;
+            text-align: center;
+        }
+
+        .remove-item {
+            color: var(--accent);
+            background: none;
+            border: none;
+            cursor: pointer;
+            margin-left: auto;
+        }
+
+        .cart-total {
+            padding: 20px;
+            border-top: 2px solid #eee;
+        }
+
+        .cart-summary {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .cart-summary.total {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .checkout-btn {
+            width: 100%;
+            padding: 15px;
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .checkout-btn:hover {
+            background-color: #e68900;
+        }
+
+        /* Checkout Page */
+        .checkout-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            margin: 40px auto;
+        }
+
+        .checkout-section {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+        }
+
+        .checkout-title {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+        }
+
+        .payment-methods {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .payment-method {
+            flex: 1;
+            text-align: center;
+            padding: 15px;
+            border: 2px solid #eee;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: border-color 0.3s;
+        }
+
+        .payment-method.active {
+            border-color: var(--primary);
+        }
+
+        .payment-method i {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .order-summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .order-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px solid #eee;
+        }
+
+        .place-order-btn {
+            width: 100%;
+            padding: 18px;
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+
+        .place-order-btn:hover {
+            background-color: #e68900;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h4 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: white;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h4:after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 3px;
+            background-color: var(--secondary);
+            bottom: 0;
+            left: 0;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bbb;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .checkout-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .search-bar {
+                margin: 20px 0;
+                order: 3;
+                max-width: 100%;
+            }
+            
+            .main-header .container {
+                flex-wrap: wrap;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                overflow-x: auto;
+                white-space: nowrap;
+                padding: 10px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .header-top .container {
+                flex-direction: column;
+                gap: 10px;
+                align-items: flex-start;
+            }
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1050;
+            display: none;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-top">
+            <div class="container">
+                <div class="country-selector">
+                    <i class="fas fa-globe"></i>
+                    <select id="countrySelect">
+                        <option value="IN">India (INR ₹)</option>
+                        <option value="US">United States (USD $)</option>
+                        <option value="UK">United Kingdom (GBP £)</option>
+                        <option value="EU">European Union (EUR €)</option>
+                        <option value="AU">Australia (AUD $)</option>
+                        <option value="CA">Canada (CAD $)</option>
+                    </select>
+                </div>
+                <div class="currency-selector">
+                    <span>Currency:</span>
+                    <select id="currencySelect">
+                        <option value="INR">INR (₹)</option>
+                        <option value="USD">USD ($)</option>
+                        <option value="GBP">GBP (£)</option>
+                        <option value="EUR">EUR (€)</option>
+                        <option value="AUD">AUD ($)</option>
+                        <option value="CAD">CAD ($)</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        
+        <div class="main-header">
+            <div class="container">
+                <div class="logo">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span>GlobalMart</span>
+                </div>
+                
+                <div class="search-bar">
+                    <input type="text" placeholder="Search for products, brands and more...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+                
+                <div class="header-icons">
+                    <a href="#" id="userAccount">
+                        <i class="fas fa-user"></i>
+                    </a>
+                    <a href="#" id="wishlist">
+                        <i class="fas fa-heart"></i>
+                    </a>
+                    <a href="#" id="cartIcon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">3</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <nav>
+            <div class="container">
+                <ul class="nav-links">
+                    <li><a href="#" class="active">Home</a></li>
+                    <li><a href="#" data-category="clothing">Clothing</a></li>
+                    <li><a href="#" data-category="electronics">Electronics</a></li>
+                    <li><a href="#" data-category="crafts">Handmade Crafts</a></li>
+                    <li><a href="#" data-category="footwear">Footwear</a></li>
+                    <li><a href="#" data-category="accessories">Accessories</a></li>
+                    <li><a href="#">Deals</a></li>
+                    <li><a href="#">New Arrivals</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Global Shopping Made Easy</h1>
+            <p>Discover unique products from around the world with seamless shipping to India and international destinations. Shop clothing, electronics, handmade crafts and more.</p>
+            <a href="#products" class="cta-button">Shop Now</a>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="container" id="products">
+        <div class="section-title">
+            <h2>Featured Products</h2>
+        </div>
+        
+        <div class="category-filters">
+            <button class="category-btn active" data-category="all">All Products</button>
+            <button class="category-btn" data-category="clothing">Clothing</button>
+            <button class="category-btn" data-category="electronics">Electronics</button>
+            <button class="category-btn" data-category="crafts">Handmade Crafts</button>
+        </div>
+        
+        <div class="products-grid" id="productsGrid">
+            <!-- Products will be dynamically generated here -->
+        </div>
+    </section>
+
+    <!-- Cart Modal -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-header">
+            <h3>Your Shopping Cart</h3>
+            <button class="close-cart" id="closeCart">&times;</button>
+        </div>
+        
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will be dynamically generated here -->
+        </div>
+        
+        <div class="cart-total">
+            <div class="cart-summary">
+                <span>Subtotal</span>
+                <span id="cartSubtotal">₹3,499.00</span>
+            </div>
+            <div class="cart-summary">
+                <span>Shipping</span>
+                <span id="cartShipping">₹99.00</span>
+            </div>
+            <div class="cart-summary total">
+                <span>Total</span>
+                <span id="cartTotal">₹3,598.00</span>
+            </div>
+            <button class="checkout-btn" id="goToCheckout">Proceed to Checkout</button>
+        </div>
+    </div>
+    
+    <!-- Overlay for cart modal -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Checkout Page (Initially Hidden) -->
+    <section id="checkoutPage" style="display: none;">
+        <div class="container checkout-container">
+            <div class="checkout-left">
+                <div class="checkout-section">
+                    <h3 class="checkout-title">Shipping Information</h3>
+                    <form id="shippingForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name *</label>
+                                <input type="text" id="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name *</label>
+                                <input type="text" id="lastName" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="address">Street Address *</label>
+                            <input type="text" id="address" required>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="city">City *</label>
+                                <input type="text" id="city" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="state">State / Province *</label>
+                                <input type="text" id="state" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="zip">ZIP / Postal Code *</label>
+                                <input type="text" id="zip" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="country">Country *</label>
+                                <select id="country" required>
+                                    <option value="IN">India</option>
+                                    <option value="US">United States</option>
+                                    <option value="UK">United Kingdom</option>
+                                    <option value="CA">Canada</option>
+                                    <option value="AU">Australia</option>
+                                    <option value="DE">Germany</option>
+                                    <option value="FR">France</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Shipping Method</label>
+                            <select id="shippingMethod">
+                                <option value="standard">Standard Delivery (5-7 days)</option>
+                                <option value="express">Express Delivery (2-3 days)</option>
+                                <option value="international">International Shipping (7-14 days)</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="checkout-section">
+                    <h3 class="checkout-title">Payment Method</h3>
+                    <div class="payment-methods">
+                        <div class="payment-method active" data-method="card">
+                            <i class="fas fa-credit-card"></i>
+                            <div>Credit/Debit Card</div>
+                        </div>
+                        <div class="payment-method" data-method="paypal">
+                            <i class="fab fa-paypal"></i>
+                            <div>PayPal</div>
+                        </div>
+                        <div class="payment-method" data-method="upi">
+                            <i class="fas fa-mobile-alt"></i>
+                            <div>UPI (India)</div>
+                        </div>
+                        <div class="payment-method" data-method="cod">
+                            <i class="fas fa-money-bill-wave"></i>
+                            <div>Cash on Delivery</div>
+                        </div>
+                    </div>
+                    
+                    <div id="paymentDetails">
+                        <!-- Payment details will be shown based on selected method -->
+                        <div class="form-group">
+                            <label for="cardNumber">Card Number</label>
+                            <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="expiryDate">Expiry Date</label>
+                                <input type="text" id="expiryDate" placeholder="MM/YY">
+                            </div>
+                            <div class="form-group">
+                                <label for="cvv">CVV</label>
+                                <input type="text" id="cvv" placeholder="123">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="cardName">Name on Card</label>
+                            <input type="text" id="cardName" placeholder="John Doe">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="checkout-right">
+                <div class="checkout-section">
+                    <h3 class="checkout-title">Order Summary</h3>
+                    <div id="orderSummaryItems">
+                        <!-- Order summary items will be dynamically generated here -->
+                    </div>
+                    
+                    <div class="order-summary-item">
+                        <span>Subtotal</span>
+                        <span id="orderSubtotal">₹3,499.00</span>
+                    </div>
+                    <div class="order-summary-item">
+                        <span>Shipping</span>
+                        <span id="orderShipping">₹99.00</span>
+                    </div>
+                    <div class="order-summary-item">
+                        <span>Tax</span>
+                        <span id="orderTax">₹420.00</span>
+                    </div>
+                    
+                    <div class="order-total">
+                        <span>Total</span>
+                        <span id="orderTotal">₹4,018.00</span>
+                    </div>
+                    
+                    <button class="place-order-btn" id="placeOrder">Place Order</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h4>GlobalMart</h4>
+                    <p>Your gateway to global shopping. We bring you the best products from around the world with seamless shipping to India and international destinations.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Shop</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Clothing</a></li>
+                        <li><a href="#">Electronics</a></li>
+                        <li><a href="#">Handmade Crafts</a></li>
+                        <li><a href="#">Footwear</a></li>
+                        <li><a href="#">Accessories</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Help & Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Shipping Policy</a></li>
+                        <li><a href="#">Returns & Exchanges</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Track Your Order</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Contact Info</h4>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Market Street, Mumbai, India</li>
+                        <li><i class="fas fa-phone"></i> +91 98765 43210</li>
+                        <li><i class="fas fa-envelope"></i> support@globalmart.com</li>
+                    </ul>
+                    <div style="margin-top: 20px;">
+                        <h4>Follow Us</h4>
+                        <div style="display: flex; gap: 15px; font-size: 1.5rem;">
+                            <a href="#" style="color: white;"><i class="fab fa-facebook"></i></a>
+                            <a href="#" style="color: white;"><i class="fab fa-twitter"></i></a>
+                            <a href="#" style="color: white;"><i class="fab fa-instagram"></i></a>
+                            <a href="#" style="color: white;"><i class="fab fa-pinterest"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2023 GlobalMart. All rights reserved. | Privacy Policy | Terms of Service
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Sample product data
+        const products = [
+            {
+                id: 1,
+                name: "Men's Cotton Kurta",
+                category: "clothing",
+                price: 1299,
+                originalPrice: 1999,
+                currency: "INR",
+                image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                rating: 4.5,
+                description: "Traditional Indian cotton kurta with elegant embroidery"
+            },
+            {
+                id: 2,
+                name: "Wireless Bluetooth Headphones",
+                category: "electronics",
+                price: 2499,
+                originalPrice: 3999,
+                currency: "INR",
+                image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                rating: 4.8,
+                description: "Noise cancelling headphones with 30hr battery life"
+            },
+            {
+                id: 3,
+                name: "Handwoven Silk Scarf",
+                category: "crafts",
+                price: 899,
+                originalPrice: 1499,
+                currency: "INR",
+                image: "https://images.unsplash.com/photo-1543076445-58d231055dff?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                rating: 4.7,
+                description: "Authentic handwoven silk scarf from Varanasi"
+            },
+            {
+                id: 4,
+                name: "Women's Ethnic Dress",
+                category: "clothing",
+                price: 1999,
+                originalPrice: 2999,
+                currency: "INR",
+                image: "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                rating: 4.6,
+                description: "Beautiful ethnic dress with intricate design"
+            },
+            {
+                id: 5,
+                name: "Smart Watch",
+                category: "electronics",
+                price: 3999,
+                originalPrice: 5999,
+                currency: "INR",
+                image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                rating: 4.4,
+                description: "Fitness tracker with heart rate monitoring"
+            },
+            {
+                id: 6,
+                name: "Handcrafted Ceramic Pottery",
+                category: "crafts",
+                price: 1599,
+                originalPrice: 2499,
+                currency: "INR",
+                image: "https://images.unsplash.com/photo-1574732011388-8e9d1ef55d93?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                rating: 4.9,
+                description: "Traditional blue pottery handmade in Rajasthan"
+            },
+            {
+                id: 7,
+                name: "Men's Formal Shirt",
+                category: "clothing",
+                price: 899,
+                originalPrice: 1499,
+                currency: "INR",
+                image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                rating: 4.3,
+                description: "Premium cotton formal shirt for office wear"
+            },
+            {
+                id: 8,
+                name: "Portable Power Bank",
+                category: "electronics",
+                price: 1299,
+                originalPrice: 1999,
+                currency: "INR",
+                image: "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                rating: 4.2,
+                description: "20000mAh fast charging power bank"
+            }
+        ];
+
+        // Sample cart data
+        let cart = [
+            { id: 1, name: "Men's Cotton Kurta", price: 1299, quantity: 1, image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" },
+            { id: 2, name: "Wireless Bluetooth Headphones", price: 2499, quantity: 1, image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" },
+            { id: 3, name: "Handwoven Silk Scarf", price: 899, quantity: 2, image: "https://images.unsplash.com/photo-1543076445-58d231055dff?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" }
+        ];
+
+        // Currency exchange rates (simplified)
+        const exchangeRates = {
+            INR: 1,
+            USD: 0.012,
+            GBP: 0.0095,
+            EUR: 0.011,
+            AUD: 0.018,
+            CAD: 0.016
+        };
+
+        // Currency symbols
+        const currencySymbols = {
+            INR: '₹',
+            USD: '$',
+            GBP: '£',
+            EUR: '€',
+            AUD: '$',
+            CAD: '$'
+        };
+
+        // Current currency
+        let currentCurrency = 'INR';
+        let currentCountry = 'IN';
+
+        // DOM Elements
+        const productsGrid = document.getElementById('productsGrid');
+        const cartModal = document.getElementById('cartModal');
+        const overlay = document.getElementById('overlay');
+        const cartIcon = document.getElementById('cartIcon');
+        const closeCart = document.getElementById('closeCart');
+        const cartItems = document.getElementById('cartItems');
+        const cartCount = document.querySelector('.cart-count');
+        const categoryFilters = document.querySelectorAll('.category-btn');
+        const navLinks = document.querySelectorAll('.nav-links a');
+        const currencySelect = document.getElementById('currencySelect');
+        const countrySelect = document.getElementById('countrySelect');
+        const checkoutPage = document.getElementById('checkoutPage');
+        const goToCheckout = document.getElementById('goToCheckout');
+        const placeOrderBtn = document.getElementById('placeOrder');
+        const paymentMethods = document.querySelectorAll('.payment-method');
+        const orderSummaryItems = document.getElementById('orderSummaryItems');
+        
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            renderProducts('all');
+            updateCartDisplay();
+            
+            // Set up event listeners
+            setupEventListeners();
+            
+            // Set initial currency and country based on selector
+            currentCurrency = currencySelect.value;
+            currentCountry = countrySelect.value;
+        });
+
+        // Render products based on category
+        function renderProducts(category) {
+            productsGrid.innerHTML = '';
+            
+            const filteredProducts = category === 'all' 
+                ? products 
+                : products.filter(product => product.category === category);
+            
+            filteredProducts.forEach(product => {
+                const convertedPrice = (product.price * exchangeRates[currentCurrency]).toFixed(2);
+                const convertedOriginalPrice = (product.originalPrice * exchangeRates[currentCurrency]).toFixed(2);
+                
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                productCard.innerHTML = `
+                    <div class="product-img">
+                        <img src="${product.image}" alt="${product.name}">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">${product.category.charAt(0).toUpperCase() + product.category.slice(1)}</div>
+                        <h3 class="product-name">${product.name}</h3>
+                        <div class="product-price">
+                            <span class="current-price">${currencySymbols[currentCurrency]}${convertedPrice}</span>
+                            <span class="original-price">${currencySymbols[currentCurrency]}${convertedOriginalPrice}</span>
+                        </div>
+                        <div class="product-rating">
+                            ${getStarRating(product.rating)}
+                            <span>(${product.rating})</span>
+                        </div>
+                        <p style="font-size: 0.9rem; color: var(--gray); margin-bottom: 15px;">${product.description}</p>
+                        <button class="add-to-cart" data-id="${product.id}">Add to Cart</button>
+                    </div>
+                `;
+                
+                productsGrid.appendChild(productCard);
+            });
+            
+            // Add event listeners to "Add to Cart" buttons
+            document.querySelectorAll('.add-to-cart').forEach(button => {
+                button.addEventListener('click', function() {
+                    const productId = parseInt(this.getAttribute('data-id'));
+                    addToCart(productId);
+                });
+            });
+        }
+
+        // Generate star rating HTML
+        function getStarRating(rating) {
+            let stars = '';
+            const fullStars = Math.floor(rating);
+            const hasHalfStar = rating % 1 >= 0.5;
+            
+            for (let i = 0; i < fullStars; i++) {
+                stars += '<i class="fas fa-star"></i>';
+            }
+            
+            if (hasHalfStar) {
+                stars += '<i class="fas fa-star-half-alt"></i>';
+            }
+            
+            const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+            for (let i = 0; i < emptyStars; i++) {
+                stars += '<i class="far fa-star"></i>';
+            }
+            
+            return stars;
+        }
+
+        // Add product to cart
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            const existingItem = cart.find(item => item.id === productId);
+            
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({
+                    id: product.id,
+                    name: product.name,
+                    price: product.price,
+                    quantity: 1,
+                    image: product.image
+                });
+            }
+            
+            updateCartDisplay();
+            showNotification(`${product.name} added to cart!`);
+        }
+
+        // Update cart display
+        function updateCartDisplay() {
+            // Update cart count
+            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+            cartCount.textContent = totalItems;
+            
+            // Update cart items in modal
+            cartItems.innerHTML = '';
+            let subtotal = 0;
+            
+            cart.forEach(item => {
+                const convertedPrice = (item.price * exchangeRates[currentCurrency]).toFixed(2);
+                const itemTotal = item.price * item.quantity;
+                subtotal += itemTotal;
+                
+                const cartItem = document.createElement('div');
+                cartItem.className = 'cart-item';
+                cartItem.innerHTML = `
+                    <div class="cart-item-img">
+                        <img src="${item.image}" alt="${item.name}">
+                    </div>
+                    <div class="cart-item-details">
+                        <div class="cart-item-name">${item.name}</div>
+                        <div class="cart-item-price">${currencySymbols[currentCurrency]}${(convertedPrice * item.quantity).toFixed(2)}</div>
+                        <div class="cart-item-actions">
+                            <button class="quantity-btn minus" data-id="${item.id}">-</button>
+                            <span class="cart-item-quantity">${item.quantity}</span>
+                            <button class="quantity-btn plus" data-id="${item.id}">+</button>
+                            <button class="remove-item" data-id="${item.id}">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                
+                cartItems.appendChild(cartItem);
+            });
+            
+            // Update cart totals
+            const shipping = currentCountry === 'IN' ? 99 : 499;
+            const convertedSubtotal = (subtotal * exchangeRates[currentCurrency]).toFixed(2);
+            const convertedShipping = (shipping * exchangeRates[currentCurrency]).toFixed(2);
+            const total = subtotal + shipping;
+            const convertedTotal = (total * exchangeRates[currentCurrency]).toFixed(2);
+            
+            document.getElementById('cartSubtotal').textContent = `${currencySymbols[currentCurrency]}${convertedSubtotal}`;
+            document.getElementById('cartShipping').textContent = `${currencySymbols[currentCurrency]}${convertedShipping}`;
+            document.getElementById('cartTotal').textContent = `${currencySymbols[currentCurrency]}${convertedTotal}`;
+            
+            // Update order summary in checkout
+            updateOrderSummary(subtotal, shipping);
+            
+            // Add event listeners to cart item buttons
+            document.querySelectorAll('.quantity-btn.minus').forEach(button => {
+                button.addEventListener('click', function() {
+                    const itemId = parseInt(this.getAttribute('data-id'));
+                    updateCartItemQuantity(itemId, -1);
+                });
+            });
+            
+            document.querySelectorAll('.quantity-btn.plus').forEach(button => {
+                button.addEventListener('click', function() {
+                    const itemId = parseInt(this.getAttribute('data-id'));
+                    updateCartItemQuantity(itemId, 1);
+                });
+            });
+            
+            document.querySelectorAll('.remove-item').forEach(button => {
+                button.addEventListener('click', function() {
+                    const itemId = parseInt(this.getAttribute('data-id'));
+                    removeFromCart(itemId);
+                });
+            });
+        }
+
+        // Update cart item quantity
+        function updateCartItemQuantity(productId, change) {
+            const item = cart.find(item => item.id === productId);
+            
+            if (item) {
+                item.quantity += change;
+                
+                if (item.quantity <= 0) {
+                    removeFromCart(productId);
+                } else {
+                    updateCartDisplay();
+                }
+            }
+        }
+
+        // Remove item from cart
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCartDisplay();
+            showNotification('Item removed from cart');
+        }
+
+        // Update order summary
+        function updateOrderSummary(subtotal, shipping) {
+            const tax = subtotal * 0.12; // 12% tax
+            const total = subtotal + shipping + tax;
+            
+            const convertedSubtotal = (subtotal * exchangeRates[currentCurrency]).toFixed(2);
+            const convertedShipping = (shipping * exchangeRates[currentCurrency]).toFixed(2);
+            const convertedTax = (tax * exchangeRates[currentCurrency]).toFixed(2);
+            const convertedTotal = (total * exchangeRates[currentCurrency]).toFixed(2);
+            
+            document.getElementById('orderSubtotal').textContent = `${currencySymbols[currentCurrency]}${convertedSubtotal}`;
+            document.getElementById('orderShipping').textContent = `${currencySymbols[currentCurrency]}${convertedShipping}`;
+            document.getElementById('orderTax').textContent = `${currencySymbols[currentCurrency]}${convertedTax}`;
+            document.getElementById('orderTotal').textContent = `${currencySymbols[currentCurrency]}${convertedTotal}`;
+            
+            // Update order summary items
+            orderSummaryItems.innerHTML = '';
+            cart.forEach(item => {
+                const convertedPrice = (item.price * exchangeRates[currentCurrency]).toFixed(2);
+                const orderItem = document.createElement('div');
+                orderItem.className = 'order-summary-item';
+                orderItem.innerHTML = `
+                    <div>
+                        <div>${item.name} x ${item.quantity}</div>
+                        <small>${currencySymbols[currentCurrency]}${convertedPrice} each</small>
+                    </div>
+                    <span>${currencySymbols[currentCurrency]}${(convertedPrice * item.quantity).toFixed(2)}</span>
+                `;
+                orderSummaryItems.appendChild(orderItem);
+            });
+        }
+
+        // Show notification
+        function showNotification(message) {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: 20px;
+                background-color: var(--success);
+                color: white;
+                padding: 15px 25px;
+                border-radius: var(--border-radius);
+                box-shadow: var(--shadow);
+                z-index: 2000;
+                transition: transform 0.3s, opacity 0.3s;
+                transform: translateX(120%);
+            `;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            // Animate in
+            setTimeout(() => {
+                notification.style.transform = 'translateX(0)';
+            }, 10);
+            
+            // Animate out and remove
+            setTimeout(() => {
+                notification.style.transform = 'translateX(120%)';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        }
+
+        // Set up event listeners
+        function setupEventListeners() {
+            // Cart icon click
+            cartIcon.addEventListener('click', function(e) {
+                e.preventDefault();
+                cartModal.classList.add('active');
+                overlay.classList.add('active');
+            });
+            
+            // Close cart
+            closeCart.addEventListener('click', function() {
+                cartModal.classList.remove('active');
+                overlay.classList.remove('active');
+            });
+            
+            // Overlay click
+            overlay.addEventListener('click', function() {
+                cartModal.classList.remove('active');
+                overlay.classList.remove('active');
+            });
+            
+            // Category filters
+            categoryFilters.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Update active button
+                    categoryFilters.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Render products for selected category
+                    const category = this.getAttribute('data-category');
+                    renderProducts(category);
+                });
+            });
+            
+            // Navigation links
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    if (this.getAttribute('data-category')) {
+                        e.preventDefault();
+                        const category = this.getAttribute('data-category');
+                        
+                        // Update active nav link
+                        navLinks.forEach(nav => nav.classList.remove('active'));
+                        this.classList.add('active');
+                        
+                        // Update category filter buttons
+                        categoryFilters.forEach(btn => {
+                            btn.classList.remove('active');
+                            if (btn.getAttribute('data-category') === category) {
+                                btn.classList.add('active');
+                            }
+                        });
+                        
+                        // If "All" category is clicked in nav
+                        if (!category) {
+                            categoryFilters[0].classList.add('active');
+                        }
+                        
+                        // Render products
+                        renderProducts(category || 'all');
+                        
+                        // Scroll to products
+                        document.getElementById('products').scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Currency selector
+            currencySelect.addEventListener('change', function() {
+                currentCurrency = this.value;
+                renderProducts(document.querySelector('.category-btn.active').getAttribute('data-category'));
+                updateCartDisplay();
+            });
+            
+            // Country selector
+            countrySelect.addEventListener('change', function() {
+                currentCountry = this.value;
+                
+                // Update currency based on country
+                const countryCurrencyMap = {
+                    'IN': 'INR',
+                    'US': 'USD',
+                    'UK': 'GBP',
+                    'EU': 'EUR',
+                    'AU': 'AUD',
+                    'CA': 'CAD'
+                };
+                
+                if (countryCurrencyMap[currentCountry]) {
+                    currentCurrency = countryCurrencyMap[currentCountry];
+                    currencySelect.value = currentCurrency;
+                    renderProducts(document.querySelector('.category-btn.active').getAttribute('data-category'));
+                    updateCartDisplay();
+                }
+            });
+            
+            // Go to checkout
+            goToCheckout.addEventListener('click', function() {
+                if (cart.length === 0) {
+                    showNotification('Your cart is empty!');
+                    return;
+                }
+                
+                // Hide cart modal
+                cartModal.classList.remove('active');
+                overlay.classList.remove('active');
+                
+                // Hide main content and show checkout page
+                document.querySelector('main').style.display = 'none';
+                document.querySelector('footer').style.display = 'none';
+                document.querySelector('.hero').style.display = 'none';
+                document.getElementById('products').style.display = 'none';
+                checkoutPage.style.display = 'block';
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
+            });
+            
+            // Payment method selection
+            paymentMethods.forEach(method => {
+                method.addEventListener('click', function() {
+                    paymentMethods.forEach(m => m.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Update payment details based on selected method
+                    const paymentType = this.getAttribute('data-method');
+                    updatePaymentDetails(paymentType);
+                });
+            });
+            
+            // Place order button
+            placeOrderBtn.addEventListener('click', function() {
+                // Validate form
+                const shippingForm = document.getElementById('shippingForm');
+                if (!shippingForm.checkValidity()) {
+                    shippingForm.reportValidity();
+                    return;
+                }
+                
+                // Show success message
+                showNotification('Order placed successfully! Thank you for shopping with us.');
+                
+                // Reset cart
+                cart = [];
+                updateCartDisplay();
+                
+                // Redirect to home after delay
+                setTimeout(() => {
+                    checkoutPage.style.display = 'none';
+                    document.querySelector('main').style.display = 'block';
+                    document.querySelector('footer').style.display = 'block';
+                    document.querySelector('.hero').style.display = 'block';
+                    document.getElementById('products').style.display = 'block';
+                    
+                    // Scroll to top
+                    window.scrollTo(0, 0);
+                }, 2000);
+            });
+        }
+
+        // Update payment details based on selected method
+        function updatePaymentDetails(paymentType) {
+            const paymentDetails = document.getElementById('paymentDetails');
+            
+            switch(paymentType) {
+                case 'card':
+                    paymentDetails.innerHTML = `
+                        <div class="form-group">
+                            <label for="cardNumber">Card Number</label>
+                            <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="expiryDate">Expiry Date</label>
+                                <input type="text" id="expiryDate" placeholder="MM/YY">
+                            </div>
+                            <div class="form-group">
+                                <label for="cvv">CVV</label>
+                                <input type="text" id="cvv" placeholder="123">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="cardName">Name on Card</label>
+                            <input type="text" id="cardName" placeholder="John Doe">
+                        </div>
+                    `;
+                    break;
+                    
+                case 'paypal':
+                    paymentDetails.innerHTML = `
+                        <div class="form-group">
+                            <p>You will be redirected to PayPal to complete your payment securely.</p>
+                            <button type="button" style="background-color: #003087; color: white; padding: 12px; width: 100%; border: none; border-radius: var(--border-radius); font-weight: 600;">
+                                <i class="fab fa-paypal"></i> Pay with PayPal
+                            </button>
+                        </div>
+                    `;
+                    break;
+                    
+                case 'upi':
+                    paymentDetails.innerHTML = `
+                        <div class="form-group">
+                            <label for="upiId">UPI ID</label>
+                            <input type="text" id="upiId" placeholder="username@bank">
+                        </div>
+                        <div class="form-group">
+                            <p style="font-size: 0.9rem; color: var(--gray);">After placing order, you will receive a payment request on your UPI app.</p>
+                        </div>
+                    `;
+                    break;
+                    
+                case 'cod':
+                    paymentDetails.innerHTML = `
+                        <div class="form-group">
+                            <p style="color: var(--accent); font-weight: 600;">Cash on Delivery is available for orders below ${currencySymbols[currentCurrency]}5000 in India only.</p>
+                            <p style="font-size: 0.9rem; color: var(--gray);">Please have exact change ready for the delivery executive.</p>
+                        </div>
+                    `;
+                    break;
+            }
+        }
+    </script>
+</body>
+</html>

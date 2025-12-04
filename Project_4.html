@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samarpan Sewa | भारतीय गैर-लाभकारी संगठन</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #2a6e3f;
+            --primary-light: #4a9e5f;
+            --secondary: #e63946;
+            --accent: #ffb703;
+            --dark: #1d3557;
+            --light: #f1faee;
+            --gray: #8d99ae;
+        }
+        
+        body {
+            color: #333;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        h1, h2, h3, h4 {
+            color: var(--dark);
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            color: white;
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        h2:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 14px 30px;
+            background-color: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #c1121f;
+        }
+        
+        .btn-accent {
+            background-color: var(--accent);
+            color: var(--dark);
+        }
+        
+        .btn-accent:hover {
+            background-color: #ffaa00;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--dark);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1509099836639-18ba1795216d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1931&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            color: #f1f1f1;
+        }
+        
+        /* Mission Section */
+        .mission {
+            background-color: white;
+        }
+        
+        .mission-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .mission-text {
+            flex: 1;
+        }
+        
+        .mission-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .mission-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Events Section */
+        .events {
+            background-color: var(--light);
+        }
+        
+        .events-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .event-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .event-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .event-date {
+            background-color: var(--primary);
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+        
+        .event-date .day {
+            font-size: 2rem;
+            font-weight: 700;
+            display: block;
+        }
+        
+        .event-date .month {
+            font-size: 1.2rem;
+        }
+        
+        .event-info {
+            padding: 25px;
+        }
+        
+        .event-info h3 {
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .event-info p {
+            color: var(--gray);
+            margin-bottom: 15px;
+        }
+        
+        /* Donations Section */
+        .donations {
+            background-color: white;
+        }
+        
+        .donation-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .donation-card {
+            background-color: var(--light);
+            padding: 40px 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .donation-card:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .donation-card:hover h3,
+        .donation-card:hover p,
+        .donation-card:hover .amount {
+            color: white;
+        }
+        
+        .donation-card h3 {
+            margin-bottom: 15px;
+        }
+        
+        .amount {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 20px 0;
+        }
+        
+        .donation-card p {
+            color: var(--gray);
+        }
+        
+        .donation-form {
+            background-color: var(--light);
+            padding: 40px;
+            border-radius: 10px;
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        /* Volunteer Section */
+        .volunteer {
+            background-color: var(--light);
+        }
+        
+        .volunteer-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .volunteer-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .volunteer-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .volunteer-text {
+            flex: 1;
+        }
+        
+        .volunteer-text ul {
+            list-style-type: none;
+            margin-bottom: 30px;
+        }
+        
+        .volunteer-text li {
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .volunteer-text li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            color: white;
+            margin-bottom: 25px;
+            font-size: 1.5rem;
+        }
+        
+        .footer-column p {
+            color: #ccc;
+        }
+        
+        .contact-info {
+            list-style: none;
+        }
+        
+        .contact-info li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-info i {
+            margin-right: 10px;
+            color: var(--accent);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.8rem;
+            }
+            
+            h2 {
+                font-size: 2.2rem;
+            }
+            
+            .mission-content, .volunteer-content {
+                flex-direction: column;
+            }
+            
+            .mission-image, .volunteer-image {
+                order: -1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 10px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            h1 {
+                font-size: 2.3rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero {
+                height: 80vh;
+            }
+            
+            .donation-form {
+                padding: 30px 20px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">Samarpan<span>Sewa</span></a>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#mission">Mission</a></li>
+                    <li><a href="#events">Events</a></li>
+                    <li><a href="#donate">Donate</a></li>
+                    <li><a href="#volunteer">Volunteer</a></li>
+                </ul>
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>भारत के समाज के लिए सेवा</h1>
+                <p>Samarpan Sewa is dedicated to creating sustainable change in Indian communities through quality education, skill development, environmental conservation, and humanitarian aid. Join us in making a difference today.</p>
+                <a href="#donate" class="btn">Donate Now</a>
+                <a href="#volunteer" class="btn btn-secondary" style="margin-left: 15px;">Become a Volunteer</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="mission" id="mission">
+        <div class="container">
+            <h2>Our Mission</h2>
+            <div class="mission-content">
+                <div class="mission-text">
+                    <h3>समाज में स्थायी परिवर्तन लाना</h3>
+                    <p>Samarpan Sewa was founded in 2015 with a powerful vision: to empower rural and urban poor communities across India by providing quality education, clean water, and sustainable livelihood opportunities.</p>
+                    <p>We believe that real change happens when people are equipped with the tools and knowledge to improve their own lives. Our approach focuses on sustainable solutions that create long-term impact rather than temporary relief.</p>
+                    <p>To date, we've impacted over 75,000 lives across 18 Indian states, built 42 schools and learning centers, provided clean water access to 250+ villages, trained 8,000 individuals in skills like tailoring, carpentry, and digital literacy.</p>
+                    <a href="#volunteer" class="btn">Join Our Mission</a>
+                </div>
+                <div class="mission-image">
+                    <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Community volunteers working together">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section class="events" id="events">
+        <div class="container">
+            <h2>Upcoming Events</h2>
+            <div class="events-container">
+                <div class="event-card">
+                    <div class="event-date">
+                        <span class="day">15</span>
+                        <span class="month">July</span>
+                    </div>
+                    <div class="event-info">
+                        <h3>Community Clean-Up Drive</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> Dharavi, Mumbai</p>
+                        <p>Join us for a day of community service as we clean up neighborhoods and promote environmental awareness. All supplies will be provided.</p>
+                        <a href="#" class="btn btn-accent">Register Now</a>
+                    </div>
+                </div>
+                
+                <div class="event-card">
+                    <div class="event-date">
+                        <span class="day">22</span>
+                        <span class="month">August</span>
+                    </div>
+                    <div class="event-info">
+                        <h3>Independence Day Fundraiser</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> ITC Grand Central, Delhi</p>
+                        <p>Celebrate India's spirit while supporting our education initiatives. Featuring cultural performances, Indian cuisine, and fundraising activities.</p>
+                        <a href="#" class="btn btn-accent">Get Tickets</a>
+                    </div>
+                </div>
+                
+                <div class="event-card">
+                    <div class="event-date">
+                        <span class="day">12</span>
+                        <span class="month">September</span>
+                    </div>
+                    <div class="event-info">
+                        <h3>Youth Skill Development Camp</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> Bangalore, Karnataka</p>
+                        <p>A week-long camp for underprivileged youth focused on digital literacy, entrepreneurship training, and leadership development.</p>
+                        <a href="#" class="btn btn-accent">Volunteer</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Donations Section -->
+    <section class="donations" id="donate">
+        <div class="container">
+            <h2>भारत के विकास में योगदान दें</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 50px;">Your donation helps us continue our vital work across Indian communities. Every contribution, no matter the size, makes a real impact on education and lives.</p>
+            
+            <div class="donation-options">
+                <div class="donation-card">
+                    <h3>स्कूल की किताबें</h3>
+                    <div class="amount">₹1,000</div>
+                    <p>Provides textbooks and learning materials for 5 children for a year.</p>
+                    <a href="#" class="btn">Donate Now</a>
+                </div>
+                
+                <div class="donation-card">
+                    <h3>शिक्षा छात्रवृत्ति</h3>
+                    <div class="amount">₹5,000</div>
+                    <p>Provides annual scholarship support for one girl child to continue her education.</p>
+                    <a href="#" class="btn">Donate Now</a>
+                </div>
+                
+                <div class="donation-card">
+                    <h3>स्वच्छ जल प्रणाली</h3>
+                    <div class="amount">₹10,000</div>
+                    <p>Provides a sustainable water purification system for a village community.</p>
+                    <a href="#" class="btn">Donate Now</a>
+                </div>
+            </div>
+            
+            <h3 style="text-align: center; margin-bottom: 30px;">अपना योगदान चुनें या कस्टम राशि दें</h3>
+            <div class="donation-form">
+                <form id="donationForm">
+                    <div class="form-group">
+                        <label for="amount">Donation Amount (₹)</label>
+                        <input type="number" id="amount" class="form-control" min="1" value="5000" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="frequency">Donation Frequency</label>
+                        <select id="frequency" class="form-control">
+                            <option value="one-time">One-time donation</option>
+                            <option value="monthly">Monthly donation</option>
+                            <option value="quarterly">Quarterly donation</option>
+                            <option value="yearly">Yearly donation</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    
+                    <button type="submit" class="btn" style="width: 100%;">Donate Now</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Volunteer Section -->
+    <section class="volunteer" id="volunteer">
+        <div class="container">
+            <h2>स्वेच्छा सेवक बनें</h2>
+            <div class="volunteer-content">
+                <div class="volunteer-image">
+                    <img src="https://images.unsplash.com/photo-1540479859555-17af45c78602?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Volunteers helping in community">
+                </div>
+                <div class="volunteer-text">
+                    <h3>हमारे सेवक दल में शामिल हों</h3>
+                    <p>Volunteers are the heart of our organization. Whether you can spare a few hours a week or want to participate in our field programs across India, we have opportunities that match your skills and interests.</p>
+                    
+                    <h4>वर्तमान अवसर:</h4>
+                    <ul>
+                        <li>Education Program Coordinators</li>
+                        <li>Event Planning and Management</li>
+                        <li>Fundraising and Advocacy</li>
+                        <li>Teaching and Tutoring Support</li>
+                        <li>Social Media and Digital Marketing</li>
+                        <li>Field Research and Documentation</li>
+                    </ul>
+                    
+                    <p>No prior experience is necessary for most positions—we provide comprehensive training for all our volunteers.</p>
+                    <a href="#contact" class="btn">Apply to Volunteer</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Samarpan Sewa</h3>
+                    <p>भारत के विकास के लिए शिक्षा, कौशल विकास, और पर्यावरणीय संरक्षण के माध्यम से परिवर्तन लाना।</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>हमसे संपर्क करें</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> 45 Mahatma Gandhi Road, Delhi 110001</li>
+                        <li><i class="fas fa-phone"></i> +91-11-4567-8900</li>
+                        <li><i class="fas fa-envelope"></i> contact@samarpansewa.org</li>
+                        <li><i class="fas fa-clock"></i> Mon-Fri: 9am-6pm IST</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="contact-info">
+                        <li><a href="#home" style="color: #ccc; text-decoration: none;">Home</a></li>
+                        <li><a href="#mission" style="color: #ccc; text-decoration: none;">Our Mission</a></li>
+                        <li><a href="#events" style="color: #ccc; text-decoration: none;">Upcoming Events</a></li>
+                        <li><a href="#donate" style="color: #ccc; text-decoration: none;">Donate</a></li>
+                        <li><a href="#volunteer" style="color: #ccc; text-decoration: none;">Volunteer</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2024 Samarpan Sewa. All rights reserved. | Registered NGO (80G) DARPAN ID: 00000000</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Donation form submission
+        document.getElementById('donationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const amount = document.getElementById('amount').value;
+            const frequency = document.getElementById('frequency').value;
+            const name = document.getElementById('name').value;
+            
+            // In a real application, this would connect to a payment processor
+            alert(`धन्यवाद, ${name}! आपका ₹${amount} का दान स्वीकार किया गया है। कृपया अपनी ईमेल की जांच करें।`);
+            
+            // Reset form
+            this.reset();
+            document.getElementById('amount').value = 5000;
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add active class to nav links on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if(scrollY >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if(link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

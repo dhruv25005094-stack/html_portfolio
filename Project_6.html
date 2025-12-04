@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bharat Voyages - Discover Incredible India & Beyond</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: #1a365d;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            color: #1a73e8;
+            margin-left: 10px;
+        }
+
+        .logo-icon {
+            color: #1a73e8;
+            font-size: 2rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav li {
+            margin-left: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #1a73e8;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #1a73e8;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                        url('https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+            border-radius: 0 0 20px 20px;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #1a73e8;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background-color: #0d62d9;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Section Styles */
+        .section-title {
+            text-align: center;
+            margin: 60px 0 40px;
+            font-size: 2.5rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 1.2rem;
+        }
+
+        /* Packages Section */
+        .packages {
+            padding: 40px 0;
+        }
+
+        .package-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .package-card {
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s;
+        }
+
+        .package-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .package-img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .package-content {
+            padding: 25px;
+        }
+
+        .package-content h3 {
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+
+        .package-price {
+            color: #1a73e8;
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin: 10px 0;
+        }
+
+        .package-features {
+            list-style: none;
+            margin: 15px 0;
+        }
+
+        .package-features li {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+
+        .package-features i {
+            color: #1a73e8;
+            margin-right: 10px;
+            font-size: 0.9rem;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            padding: 40px 0;
+            background-color: #f0f7ff;
+        }
+
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            height: 250px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: white;
+            padding: 20px;
+            transform: translateY(10px);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        /* Booking Section */
+        .booking {
+            padding: 40px 0;
+        }
+
+        .booking-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .booking-form {
+            flex: 1;
+            min-width: 300px;
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-control:focus {
+            border-color: #1a73e8;
+            outline: none;
+        }
+
+        .booking-info {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .booking-info h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        /* Tips Section */
+        .tips {
+            padding: 40px 0;
+            background-color: #f0f7ff;
+        }
+
+        .tips-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .tip-card {
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tip-icon {
+            font-size: 2.5rem;
+            color: #1a73e8;
+            margin-bottom: 15px;
+        }
+
+        .tip-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1a365d;
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-column h3 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column ul li a:hover {
+            color: white;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .social-icons a:hover {
+            background-color: #1a73e8;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            nav li {
+                margin: 10px 0;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                padding: 70px 0;
+            }
+
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+
+            .package-cards, .gallery-container, .tips-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-globe-asia logo-icon"></i>
+                <h1>Bharat Voyages</h1>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#packages">Packages</a></li>
+                    <li><a href="#gallery">Destinations</a></li>
+                    <li><a href="#booking">Booking</a></li>
+                    <li><a href="#tips">Travel Tips</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h2>Discover Incredible India & Beyond</h2>
+            <p>Experience the rich culture, breathtaking landscapes, and vibrant traditions with our expertly curated tour packages designed specifically for Indian travelers.</p>
+            <a href="#booking" class="cta-button">Book Your Dream Vacation</a>
+        </div>
+    </section>
+
+    <!-- Tour Packages Section -->
+    <section class="packages" id="packages">
+        <div class="container">
+            <h2 class="section-title">Popular Tour Packages</h2>
+            <p class="section-subtitle">Handpicked experiences for every type of traveler</p>
+            
+            <div class="package-cards">
+                <!-- Package 1 -->
+                <div class="package-card">
+                    <img src="https://images.unsplash.com/photo-1528164344705-47542687000d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2092&q=80" alt="Kashmir" class="package-img">
+                    <div class="package-content">
+                        <h3>Kashmir: Paradise on Earth</h3>
+                        <p class="package-price">₹24,999 per person</p>
+                        <p>6 days of breathtaking beauty in Srinagar, Gulmarg, and Pahalgam with houseboat stay.</p>
+                        <ul class="package-features">
+                            <li><i class="fas fa-check"></i> 5 Nights accommodation</li>
+                            <li><i class="fas fa-check"></i> All meals included</li>
+                            <li><i class="fas fa-check"></i> Shikara ride on Dal Lake</li>
+                            <li><i class="fas fa-check"></i> Gondola ride in Gulmarg</li>
+                        </ul>
+                        <a href="#booking" class="cta-button" style="padding: 10px 20px; font-size: 1rem;">Book Now</a>
+                    </div>
+                </div>
+                
+                <!-- Package 2 -->
+                <div class="package-card">
+                    <img src="https://images.unsplash.com/photo-1553421223319-8d6e7c08c5c1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="Goa" class="package-img">
+                    <div class="package-content">
+                        <h3>Goa Beach Retreat</h3>
+                        <p class="package-price">₹18,499 per person</p>
+                        <p>5 days of sun, sand, and Portuguese heritage with beachfront accommodation.</p>
+                        <ul class="package-features">
+                            <li><i class="fas fa-check"></i> 4 Nights beach resort stay</li>
+                            <li><i class="fas fa-check"></i> Breakfast & dinner included</li>
+                            <li><i class="fas fa-check"></i> North & South Goa sightseeing</li>
+                            <li><i class="fas fa-check"></i> Cruise on Mandovi River</li>
+                        </ul>
+                        <a href="#booking" class="cta-button" style="padding: 10px 20px; font-size: 1rem;">Book Now</a>
+                    </div>
+                </div>
+                
+                <!-- Package 3 -->
+                <div class="package-card">
+                    <img src="https://images.unsplash.com/photo-1593693399741-6c15c5d7f0e9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Dubai" class="package-img">
+                    <div class="package-content">
+                        <h3>Dubai Extravaganza</h3>
+                        <p class="package-price">₹49,999 per person</p>
+                        <p>5 days of luxury in the City of Gold with desert safari and Burj Khalifa visit.</p>
+                        <ul class="package-features">
+                            <li><i class="fas fa-check"></i> 4 Nights 4-star hotel</li>
+                            <li><i class="fas fa-check"></i> Desert safari with dinner</li>
+                            <li><i class="fas fa-check"></i> Burj Khalifa 124th floor access</li>
+                            <li><i class="fas fa-check"></i> Dubai Mall & Fountain show</li>
+                        </ul>
+                        <a href="#booking" class="cta-button" style="padding: 10px 20px; font-size: 1rem;">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <h2 class="section-title">Travel Destinations Gallery</h2>
+            <p class="section-subtitle">Explore the beautiful places you can visit with us</p>
+            
+            <div class="gallery-container">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Leh Ladakh">
+                    <div class="gallery-overlay">
+                        <h3>Leh Ladakh</h3>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1564507004663-b6dfb3e2ede5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2067&q=80" alt="Kerala Backwaters">
+                    <div class="gallery-overlay">
+                        <h3>Kerala Backwaters</h3>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1596394516093-9b6e6a2c4eb7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Rajasthan">
+                    <div class="gallery-overlay">
+                        <h3>Rajasthan Forts</h3>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1552465011-b4e30bf7349d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" alt="Maldives">
+                    <div class="gallery-overlay">
+                        <h3>Maldives</h3>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Singapore">
+                    <div class="gallery-overlay">
+                        <h3>Singapore</h3>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1548013146-72479768bada?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Taj Mahal">
+                    <div class="gallery-overlay">
+                        <h3>Taj Mahal, Agra</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section class="booking" id="booking">
+        <div class="container">
+            <h2 class="section-title">Book Your Dream Vacation</h2>
+            <p class="section-subtitle">Fill out the form below and our travel experts will contact you within 24 hours</p>
+            
+            <div class="booking-container">
+                <div class="booking-form">
+                    <form id="bookingForm">
+                        <div class="form-group">
+                            <label for="fullName">Full Name</label>
+                            <input type="text" id="fullName" class="form-control" placeholder="Enter your full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" class="form-control" placeholder="Enter your email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" class="form-control" placeholder="Enter your phone number" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="destination">Destination Interest</label>
+                            <select id="destination" class="form-control" required>
+                                <option value="">Select a destination</option>
+                                <option value="kashmir">Kashmir</option>
+                                <option value="goa">Goa</option>
+                                <option value="dubai">Dubai</option>
+                                <option value="ladakh">Ladakh</option>
+                                <option value="kerala">Kerala</option>
+                                <option value="rajasthan">Rajasthan</option>
+                                <option value="maldives">Maldives</option>
+                                <option value="singapore">Singapore</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="travelDate">Travel Date</label>
+                            <input type="date" id="travelDate" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="travelers">Number of Travelers</label>
+                            <input type="number" id="travelers" class="form-control" min="1" max="20" placeholder="Number of people" required>
+                        </div>
+                        <button type="submit" class="cta-button" style="width: 100%;">Submit Booking Request</button>
+                    </form>
+                </div>
+                
+                <div class="booking-info">
+                    <h3>Why Book With Us?</h3>
+                    <ul class="package-features">
+                        <li><i class="fas fa-check"></i> <strong>Best Price Guarantee:</strong> We guarantee the best prices for all our packages</li>
+                        <li><i class="fas fa-check"></i> <strong>24/7 Customer Support:</strong> Our travel experts are available round the clock</li>
+                        <li><i class="fas fa-check"></i> <strong>Easy EMI Options:</strong> Travel now, pay later with flexible EMI plans</li>
+                        <li><i class="fas fa-check"></i> <strong>Customizable Itineraries:</strong> Tailor-made packages as per your preferences</li>
+                        <li><i class="fas fa-check"></i> <strong>Visa Assistance:</strong> Complete guidance for international travel visas</li>
+                        <li><i class="fas fa-check"></i> <strong>Verified Hotels & Transport:</strong> Quality-assured accommodations and transfers</li>
+                    </ul>
+                    <div style="margin-top: 30px;">
+                        <h4>Need Immediate Assistance?</h4>
+                        <p>Call us at: <strong style="color: #1a73e8; font-size: 1.2rem;">+91-9876543210</strong></p>
+                        <p>Email: <strong>info@bharatvoyages.com</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Travel Tips Section -->
+    <section class="tips" id="tips">
+        <div class="container">
+            <h2 class="section-title">Essential Travel Tips</h2>
+            <p class="section-subtitle">Expert advice for Indian travelers to make your journey smooth and memorable</p>
+            
+            <div class="tips-container">
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-passport"></i>
+                    </div>
+                    <h3>Passport & Visa</h3>
+                    <p>Ensure your passport is valid for at least 6 months from your travel date. Apply for visas well in advance, especially for popular destinations like Europe and USA.</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-money-bill-wave"></i>
+                    </div>
+                    <h3>Currency & Budgeting</h3>
+                    <p>Carry a mix of cash, cards, and digital payment options. Inform your bank about international travel to avoid card blocks. Always keep some local currency for emergencies.</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3>Food & Dietary Needs</h3>
+                    <p>Research vegetarian/vegan friendly restaurants abroad. Carry some ready-to-eat Indian snacks. Be mindful of local food etiquette and water safety precautions.</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-suitcase"></i>
+                    </div>
+                    <h3>Packing Smart</h3>
+                    <p>Check weather forecasts and pack accordingly. Always carry a basic medical kit with essential medicines. Don't forget power adapters for your electronic devices.</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Travel Insurance</h3>
+                    <p>Never travel internationally without comprehensive travel insurance that covers medical emergencies, trip cancellations, and lost luggage.</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h3>Cultural Sensitivity</h3>
+                    <p>Research local customs and dress codes. Learn basic greetings in the local language. Be respectful of religious sites and local traditions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <h3>Bharat Voyages</h3>
+                    <p>Your trusted travel partner for exploring India and the world. We specialize in creating memorable travel experiences for Indian travelers.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#packages">Tour Packages</a></li>
+                        <li><a href="#gallery">Destinations</a></li>
+                        <li><a href="#booking">Booking</a></li>
+                        <li><a href="#tips">Travel Tips</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Popular Destinations</h3>
+                    <ul>
+                        <li><a href="#">Kashmir</a></li>
+                        <li><a href="#">Goa</a></li>
+                        <li><a href="#">Dubai</a></li>
+                        <li><a href="#">Maldives</a></li>
+                        <li><a href="#">Singapore</a></li>
+                        <li><a href="#">Thailand</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Travel Street, Mumbai, India</li>
+                        <li><i class="fas fa-phone"></i> +91-9876543210</li>
+                        <li><i class="fas fa-envelope"></i> info@bharatvoyages.com</li>
+                        <li><i class="fas fa-clock"></i> Mon-Sat: 9:00 AM - 8:00 PM</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Bharat Voyages. All rights reserved. | Designed for Indian travelers</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navMenu = document.getElementById('navMenu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navMenu.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Form submission
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('fullName').value;
+            const destination = document.getElementById('destination').options[document.getElementById('destination').selectedIndex].text;
+            
+            // Show success message
+            alert(`Thank you ${name}! Your booking request for ${destination} has been received. Our travel expert will contact you within 24 hours.`);
+            
+            // Reset form
+            this.reset();
+        });
+        
+        // Set min date for travel date input to today
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('travelDate').setAttribute('min', today);
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

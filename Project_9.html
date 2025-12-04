@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>India Insight - Your Window to Modern India</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #e63946;
+            --secondary: #1d3557;
+            --accent: #f4a261;
+            --light: #f1faee;
+            --dark: #1a1a2e;
+            --gray: #6c757d;
+            --light-gray: #f8f9fa;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: var(--light-gray);
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Merriweather', serif;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-top {
+            background-color: var(--secondary);
+            color: white;
+            padding: 8px 0;
+            font-size: 0.9rem;
+        }
+        
+        .header-top .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .header-top span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+        
+        .logo-tagline {
+            margin-left: 15px;
+            font-size: 0.9rem;
+            color: var(--gray);
+            border-left: 1px solid var(--gray);
+            padding-left: 15px;
+        }
+        
+        nav {
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+            background-color: white;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            position: relative;
+        }
+        
+        .nav-links a {
+            display: block;
+            padding: 18px 20px;
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+            background-color: var(--light-gray);
+        }
+        
+        .nav-links .active {
+            color: var(--primary);
+            border-bottom: 3px solid var(--primary);
+        }
+        
+        .nav-actions {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .search-btn, .menu-toggle {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            color: var(--secondary);
+            cursor: pointer;
+        }
+        
+        .menu-toggle {
+            display: none;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(29, 53, 87, 0.8), rgba(29, 53, 87, 0.9)), url('https://images.unsplash.com/photo-1524492412937-b28074a5d7da?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 80px 0;
+            margin-bottom: 40px;
+        }
+        
+        .hero-content {
+            max-width: 700px;
+        }
+        
+        .hero h1 {
+            font-size: 2.8rem;
+            color: white;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .hero-btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .hero-btn:hover {
+            background-color: #c1121f;
+            transform: translateY(-3px);
+        }
+        
+        /* Main Content */
+        .main-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        
+        /* Featured Articles */
+        .section-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary);
+        }
+        
+        .section-title h2 {
+            font-size: 1.8rem;
+        }
+        
+        .view-all {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .featured-articles {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .article-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        .article-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .article-img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+        
+        .article-content {
+            padding: 20px;
+        }
+        
+        .article-category {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .article-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+        
+        .article-title a {
+            color: inherit;
+            text-decoration: none;
+        }
+        
+        .article-title a:hover {
+            color: var(--primary);
+        }
+        
+        .article-excerpt {
+            color: var(--gray);
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+        
+        .article-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: var(--gray);
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            background-color: white;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        .sidebar-widget {
+            margin-bottom: 30px;
+        }
+        
+        .sidebar-widget h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--light-gray);
+        }
+        
+        .topics-list {
+            list-style: none;
+        }
+        
+        .topics-list li {
+            margin-bottom: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .topics-list a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .topics-list a:hover {
+            color: var(--primary);
+        }
+        
+        .topic-count {
+            background-color: var(--light-gray);
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+        }
+        
+        /* Subscription */
+        .subscription-box {
+            background: linear-gradient(to right, var(--secondary), #2a4b8d);
+            color: white;
+            padding: 25px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .subscription-box h3 {
+            color: white;
+            margin-bottom: 15px;
+        }
+        
+        .subscription-box p {
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+        
+        .subscription-form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .subscription-form input {
+            padding: 12px 15px;
+            border: none;
+            border-radius: 4px;
+            font-family: 'Open Sans', sans-serif;
+        }
+        
+        .subscribe-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 15px;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .subscribe-btn:hover {
+            background-color: #c1121f;
+        }
+        
+        /* Trending Articles */
+        .trending-article {
+            display: flex;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .trending-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--light-gray);
+            margin-right: 15px;
+            line-height: 1;
+        }
+        
+        .trending-content h4 {
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+        
+        .trending-content h4 a {
+            color: inherit;
+            text-decoration: none;
+        }
+        
+        .trending-content h4 a:hover {
+            color: var(--primary);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h4 {
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 140px;
+                left: -100%;
+                width: 100%;
+                flex-direction: column;
+                background-color: white;
+                transition: left 0.3s ease;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+                z-index: 999;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links a {
+                padding: 15px 20px;
+                border-bottom: 1px solid #eee;
+            }
+            
+            .featured-articles {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .logo-tagline {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero {
+                padding: 60px 0;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-top">
+            <div class="container">
+                <span><i class="far fa-clock"></i> Thursday, 4 July 2024</span>
+                <span><i class="fas fa-map-marker-alt"></i> New Delhi, 28°C</span>
+            </div>
+        </div>
+        
+        <div class="container">
+            <div class="logo-container">
+                <a href="#" class="logo">India<span>Insight</span></a>
+                <div class="logo-tagline">Your Window to Modern India</div>
+            </div>
+        </div>
+        
+        <nav>
+            <div class="container nav-container">
+                <ul class="nav-links">
+                    <li><a href="#" class="active">Home</a></li>
+                    <li><a href="#">Politics</a></li>
+                    <li><a href="#">Business</a></li>
+                    <li><a href="#">Technology</a></li>
+                    <li><a href="#">Culture</a></li>
+                    <li><a href="#">Lifestyle</a></li>
+                    <li><a href="#">Sports</a></li>
+                    <li><a href="#">Opinion</a></li>
+                </ul>
+                
+                <div class="nav-actions">
+                    <button class="search-btn"><i class="fas fa-search"></i></button>
+                    <button class="menu-toggle"><i class="fas fa-bars"></i></button>
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>India's Economic Growth Surpasses Expectations in Q2 2024</h1>
+                <p>Exclusive analysis of the latest GDP figures and what they mean for the common Indian. How technology and policy reforms are driving the new economic wave.</p>
+                <a href="#" class="hero-btn">Read Full Story</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Main Content -->
+    <div class="container">
+        <div class="main-content">
+            <!-- Featured Articles Section -->
+            <div class="content-primary">
+                <div class="section-title">
+                    <h2>Featured Stories</h2>
+                    <a href="#" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="featured-articles">
+                    <!-- Article 1 -->
+                    <article class="article-card">
+                        <img src="https://images.unsplash.com/photo-1583417319070-4a69db38a482?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Indian Election" class="article-img">
+                        <div class="article-content">
+                            <span class="article-category">Politics</span>
+                            <h3 class="article-title"><a href="#">2024 Elections: What the Results Mean for India's Future</a></h3>
+                            <p class="article-excerpt">An in-depth analysis of the recent state elections and their implications on national politics and policy direction.</p>
+                            <div class="article-meta">
+                                <span><i class="far fa-user"></i> By Rajesh Kumar</span>
+                                <span><i class="far fa-clock"></i> 2 hours ago</span>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <!-- Article 2 -->
+                    <article class="article-card">
+                        <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Startup Culture" class="article-img">
+                        <div class="article-content">
+                            <span class="article-category">Business</span>
+                            <h3 class="article-title"><a href="#">Bengaluru's Startup Ecosystem: Boom or Bubble?</a></h3>
+                            <p class="article-excerpt">Examining the rapid growth of India's Silicon Valley and the sustainability of its startup culture amid global challenges.</p>
+                            <div class="article-meta">
+                                <span><i class="far fa-user"></i> By Priya Sharma</span>
+                                <span><i class="far fa-clock"></i> 5 hours ago</span>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <!-- Article 3 -->
+                    <article class="article-card">
+                        <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Indian Festival" class="article-img">
+                        <div class="article-content">
+                            <span class="article-category">Culture</span>
+                            <h3 class="article-title"><a href="#">Diwali 2024: Modern Traditions in Ancient Celebrations</a></h3>
+                            <p class="article-excerpt">How urban Indians are redefining festival celebrations while maintaining cultural roots in an increasingly digital world.</p>
+                            <div class="article-meta">
+                                <span><i class="far fa-user"></i> By Anjali Mehta</span>
+                                <span><i class="far fa-clock"></i> 1 day ago</span>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <!-- Article 4 -->
+                    <article class="article-card">
+                        <img src="https://images.unsplash.com/photo-1551135049-8a33b2fb2f5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="AI Technology" class="article-img">
+                        <div class="article-content">
+                            <span class="article-category">Technology</span>
+                            <h3 class="article-title"><a href="#">India's AI Revolution: Opportunities and Ethical Challenges</a></h3>
+                            <p class="article-excerpt">Exploring how artificial intelligence is transforming Indian industries and the regulatory framework needed to govern it.</p>
+                            <div class="article-meta">
+                                <span><i class="far fa-user"></i> By Vikram Patel</span>
+                                <span><i class="far fa-clock"></i> 2 days ago</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+            
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <!-- Topics Section -->
+                <div class="sidebar-widget">
+                    <h3>Explore Topics</h3>
+                    <ul class="topics-list">
+                        <li><a href="#">National News <span class="topic-count">42</span></a></li>
+                        <li><a href="#">State Politics <span class="topic-count">28</span></a></li>
+                        <li><a href="#">Economic Policy <span class="topic-count">35</span></a></li>
+                        <li><a href="#">Tech Startups <span class="topic-count">19</span></a></li>
+                        <li><a href="#">Bollywood & Arts <span class="topic-count">27</span></a></li>
+                        <li><a href="#">Health & Wellness <span class="topic-count">31</span></a></li>
+                        <li><a href="#">Education Reform <span class="topic-count">22</span></a></li>
+                        <li><a href="#">Sustainable Living <span class="topic-count">16</span></a></li>
+                    </ul>
+                </div>
+                
+                <!-- Subscription Section -->
+                <div class="sidebar-widget">
+                    <div class="subscription-box">
+                        <h3>Stay Informed</h3>
+                        <p>Subscribe to our newsletter for daily curated news and exclusive insights delivered to your inbox.</p>
+                        <form class="subscription-form">
+                            <input type="text" placeholder="Your Name" required>
+                            <input type="email" placeholder="Email Address" required>
+                            <button type="submit" class="subscribe-btn">Subscribe Now</button>
+                        </form>
+                        <p style="font-size:0.8rem; margin-top:10px;">By subscribing, you agree to our Privacy Policy</p>
+                    </div>
+                </div>
+                
+                <!-- Trending Articles -->
+                <div class="sidebar-widget">
+                    <h3>Trending Now</h3>
+                    <div class="trending-article">
+                        <div class="trending-number">1</div>
+                        <div class="trending-content">
+                            <h4><a href="#">Monsoon 2024: Rainfall Patterns and Agricultural Impact</a></h4>
+                            <div class="article-meta">
+                                <span><i class="far fa-eye"></i> 12.5k views</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="trending-article">
+                        <div class="trending-number">2</div>
+                        <div class="trending-content">
+                            <h4><a href="#">Indian Cricket Team's Road to World Cup 2024</a></h4>
+                            <div class="article-meta">
+                                <span><i class="far fa-eye"></i> 9.8k views</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="trending-article">
+                        <div class="trending-number">3</div>
+                        <div class="trending-content">
+                            <h4><a href="#">Revival of Traditional Indian Crafts in Global Markets</a></h4>
+                            <div class="article-meta">
+                                <span><i class="far fa-eye"></i> 7.2k views</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h4>India Insight</h4>
+                    <p>Your trusted source for news, analysis and perspectives on modern India. Independent journalism since 2010.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Advertise With Us</a></li>
+                        <li><a href="#">Press Releases</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">Editorial Policy</a></li>
+                        <li><a href="#">Code of Ethics</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Subscription Plans</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Digital Only - ₹299/month</a></li>
+                        <li><a href="#">Digital + Print - ₹499/month</a></li>
+                        <li><a href="#">Student Discount - 50% off</a></li>
+                        <li><a href="#">Corporate Plans</a></li>
+                        <li><a href="#">Gift a Subscription</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2024 India Insight Media Pvt. Ltd. All rights reserved.</p>
+                <p>Head Office: Connaught Place, New Delhi, India | Contact: +91 11 2345 6789 | Email: contact@indiainsight.com</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+        
+        // Simple subscription form submission
+        document.querySelector('.subscription-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = this.querySelector('input[type="text"]').value;
+            const email = this.querySelector('input[type="email"]').value;
+            
+            if(name && email) {
+                alert(`Thank you ${name}! You have successfully subscribed to India Insight newsletter. A confirmation has been sent to ${email}.`);
+                this.reset();
+            }
+        });
+        
+        // Update date in header
+        const dateElement = document.querySelector('.header-top span:first-child');
+        const now = new Date();
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        dateElement.innerHTML = `<i class="far fa-clock"></i> ${now.toLocaleDateString('en-IN', options)}`;
+        
+        // Simple search functionality
+        document.querySelector('.search-btn').addEventListener('click', function() {
+            const searchQuery = prompt("Enter your search query:");
+            if(searchQuery) {
+                alert(`Searching for: "${searchQuery}"\n\nThis is a demo. In a real implementation, this would redirect to search results.`);
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lens & Light | भारतीय पेशेवर फोटोग्राफी</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Raleway', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        h2:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background: #d4af37;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: rgba(0, 0, 0, 0.9);
+            color: white;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            padding: 15px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #d4af37;
+        }
+        
+        .logo span {
+            color: white;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 2rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #d4af37;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            display: flex;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            margin-bottom: 1.5rem;
+            animation: fadeIn 1.5s ease;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            animation: fadeIn 2s ease;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #d4af37;
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid #d4af37;
+        }
+        
+        .btn:hover {
+            background-color: transparent;
+            color: #d4af37;
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid white;
+        }
+        
+        .btn-outline:hover {
+            background-color: white;
+            color: #333;
+        }
+        
+        /* About Section */
+        .section {
+            padding: 100px 0;
+        }
+        
+        .about {
+            background-color: white;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s;
+        }
+        
+        .about-image img:hover {
+            transform: scale(1.03);
+        }
+        
+        /* Portfolio Categories */
+        .portfolio {
+            background-color: #f5f5f5;
+        }
+        
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .category-card {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            background-color: white;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .category-img {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .category-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .category-card:hover .category-img img {
+            transform: scale(1.1);
+        }
+        
+        .category-content {
+            padding: 25px;
+        }
+        
+        .category-content h3 {
+            color: #222;
+            margin-bottom: 10px;
+        }
+        
+        /* Booking Section */
+        .booking {
+            background-color: white;
+        }
+        
+        .booking-form {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #f9f9f9;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: 'Raleway', sans-serif;
+            font-size: 1rem;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #222;
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .footer-column h3 {
+            color: #d4af37;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: #333;
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: #d4af37;
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #444;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        /* Modal for booking confirmation */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #777;
+        }
+        
+        .modal-content i {
+            font-size: 3rem;
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .about-image {
+                order: -1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: rgba(0, 0, 0, 0.95);
+                flex-direction: column;
+                padding: 20px 0;
+            }
+            
+            nav ul.active {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 0;
+                text-align: center;
+                padding: 15px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .hero {
+                height: 80vh;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .section {
+                padding: 70px 0;
+            }
+            
+            .booking-form {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">Lens & <span>रोशनी</span></div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul id="mainNav">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#booking">Book a Session</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>जीवन के खूबसूरत पल सहेजना</h1>
+                <p>Professional photography for Indian weddings, portraits, events, and commercial projects. Based in Delhi, serving across India and globally.</p>
+                <a href="#portfolio" class="btn">View Portfolio</a>
+                <a href="#booking" class="btn btn-outline">Book a Session</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section about" id="about">
+        <div class="container">
+            <h2>मेरे बारे में</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>नमस्ते! मैं राज शर्मा हूँ, एक पेशेवर फोटोग्राफर जिसके पास 12 साल का अनुभव है खास पलों को कैमरे में सहेजने का।</p>
+                    <p>मेरा फोटोग्राफी का जुनून भारत भर की यात्राओं से शुरू हुआ, जहां मैंने तस्वीरों की शक्ति को समझा और भारतीय संस्कृति के विविध पहलुओं को कैमरे में कैद किया।</p>
+                    <p>मैं भारतीय विवाह, पोर्ट्रेट और कमर्शियल फोटोग्राफी में माहिर हूँ, साथ ही परंपरागत और आधुनिक शैली का अद्भुत मेल प्रदान करता हूँ। मेरा प्रत्येक सेशन व्यक्तिगत और अनूठा होता है।</p>
+                    <p>कैमरे से दूर, मैं फोटोग्राफी वर्कशॉप सिखाता हूँ और अपने स्टूडियो में नई तकनीकें सीखता हूँ।</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1554048612-b6a482bc67e5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Alex Morgan, Photographer">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="section portfolio" id="portfolio">
+        <div class="container">
+            <h2>पोर्टफोलियो श्रेणियाँ</h2>
+            <div class="categories">
+                <div class="category-card">
+                    <div class="category-img">
+                        <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Wedding Photography">
+                    </div>
+                    <div class="category-content">
+                        <h3>शादी की फोटोग्राफी</h3>
+                        <p>आपके जीवन के सबसे खास दिन को भावना और कला के साथ सहेजना। मेहंदी से लेकर ब्याह तक।</p>
+                        <a href="#" class="btn">View Gallery</a>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-img">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&auto=format&fit=crop&w-1350&q=80" alt="Portrait Photography">
+                    </div>
+                    <div class="category-content">
+                        <h3>पोर्ट्रेट फोटोग्राफी</h3>
+                        <p>व्यक्तित्व और सार को कैद करती पेशेवर तस्वीरें। व्यक्तिगत, पारिवारिक और कॉर्पोरेट सेशन।</p>
+                        <a href="#" class="btn">View Gallery</a>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-img">
+                        <img src="https://images.unsplash.com/photo-1492684223066-dd23140edf6d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Event Photography">
+                    </div>
+                    <div class="category-content">
+                        <h3>ईवेंट फोटोग्राफी</h3>
+                        <p>कॉर्पोरेट इवेंट, संगीत समारोह, पार्टी और खास अवसरों का पेशेवर कवरेज।</p>
+                        <a href="#" class="btn">View Gallery</a>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-img">
+                        <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Commercial Photography">
+                    </div>
+                    <div class="category-content">
+                        <h3>वाणिज्यिक फोटोग्राफी</h3>
+                        <p>व्यवसाय, उत्पाद, विज्ञापन और ब्रांड की कहानी के लिए उच्च गुणवत्ता की तस्वीरें।</p>
+                        <a href="#" class="btn">View Gallery</a>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-img">
+                        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Travel Photography">
+                    </div>
+                    <div class="category-content">
+                        <h3>यात्रा फोटोग्राफी</h3>
+                        <p>भारत के विविध संस्कृति, परिदृश्य और लोगों की सुंदरता को दस्तावेज़ करना।</p>
+                        <a href="#" class="btn">View Gallery</a>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-img">
+                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Fine Art Photography">
+                    </div>
+                    <div class="category-content">
+                        <h3>फाइन आर्ट फोटोग्राफी</h3>
+                        <p>सुंदरता, पहचान और मानवीय अनुभव की खोज करती कलात्मक कृतियाँ।</p>
+                        <a href="#" class="btn">View Gallery</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section class="section booking" id="booking">
+        <div class="container">
+            <h2>एक सेशन बुक करें</h2>
+            <div class="booking-form">
+                <form id="bookingForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">पूरा नाम *</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">ईमेल पता *</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone">फोन नंबर</label>
+                            <input type="tel" id="phone" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="date">पसंदीदा तारीख</label>
+                            <input type="date" id="date" class="form-control">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="category">फोटोग्राफी श्रेणी *</label>
+                            <select id="category" class="form-control" required>
+                                <option value="">एक श्रेणी चुनें</option>
+                                <option value="wedding">शादी की फोटोग्राफी</option>
+                                <option value="portrait">पोर्ट्रेट फोटोग्राफी</option>
+                                <option value="event">ईवेंट फोटोग्राफी</option>
+                                <option value="commercial">वाणिज्यिक फोटोग्राफी</option>
+                                <option value="travel">यात्रा फोटोग्राफी</option>
+                                <option value="fine-art">फाइन आर्ट फोटोग्राफी</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">अपनी परियोजना के बारे में बताएं *</label>
+                        <textarea id="message" class="form-control" rows="5" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <button type="submit" class="btn" style="width: 100%;">बुकिंग अनुरोध सबमिट करें</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Lens & रोशनी</h3>
+                    <p>सभी अवसरों के लिए पेशेवर फोटोग्राफी सेवाएं। आपके खास पलों को रचनात्मकता और जुनून के साथ सहेजना।</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>संपर्क जानकारी</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 45 फोटोग्राफी रोड, कनॉट प्लेस, नई दिल्ली 110001</p>
+                    <p><i class="fas fa-phone"></i> +91-98765-43210</p>
+                    <p><i class="fas fa-envelope"></i> hello@lensaurroshni.com</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>त्वरित लिंक</h3>
+                    <ul style="list-style: none;">
+                        <li><a href="#home" style="color: #ddd; text-decoration: none;">होम</a></li>
+                        <li><a href="#about" style="color: #ddd; text-decoration: none;">मेरे बारे में</a></li>
+                        <li><a href="#portfolio" style="color: #ddd; text-decoration: none;">पोर्टफोलियो</a></li>
+                        <li><a href="#booking" style="color: #ddd; text-decoration: none;">एक सेशन बुक करें</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2024 Lens & रोशनी फोटोग्राफी. सर्वाधिकार सुरक्षित।</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Booking Confirmation Modal -->
+    <div class="modal" id="confirmationModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeModal">&times;</span>
+            <i class="fas fa-check-circle"></i>
+            <h3>बुकिंग अनुरोध प्राप्त!</h3>
+            <p>मेरी फोटोग्राफी सेवाओं में रुचि दिखाने के लिए धन्यवाद। मुझे आपका बुकिंग अनुरोध मिल गया है और मैं 24 घंटे के अंदर आपसे संपर्क करूँगा।</p>
+            <p>इसी बीच, आप मेरा पोर्टफोलियो देख सकते हैं या किसी जरूरी सवाल के लिए सीधे मुझसे संपर्क कर सकते हैं।</p>
+            <button class="btn" id="closeModalBtn">बंद करें</button>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            mobileMenuBtn.innerHTML = mainNav.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                if (mainNav.classList.contains('active')) {
+                    mainNav.classList.remove('active');
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+            });
+        });
+        
+        // Booking form submission
+        const bookingForm = document.getElementById('bookingForm');
+        const confirmationModal = document.getElementById('confirmationModal');
+        const closeModal = document.getElementById('closeModal');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+        
+        bookingForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // In a real application, you would send the form data to a server here
+            // For this demo, we'll just show the confirmation modal
+            
+            confirmationModal.style.display = 'flex';
+            
+            // Reset form
+            bookingForm.reset();
+        });
+        
+        // Close modal functions
+        closeModal.addEventListener('click', () => {
+            confirmationModal.style.display = 'none';
+        });
+        
+        closeModalBtn.addEventListener('click', () => {
+            confirmationModal.style.display = 'none';
+        });
+        
+        // Close modal when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === confirmationModal) {
+                confirmationModal.style.display = 'none';
+            }
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.padding = '10px 0';
+                header.style.backgroundColor = 'rgba(0, 0, 0, 0.95)';
+            } else {
+                header.style.padding = '15px 0';
+                header.style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
+            }
+        });
+        
+        // Set minimum date for booking to today
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('date').setAttribute('min', today);
+    </script>
+</body>
+</html>

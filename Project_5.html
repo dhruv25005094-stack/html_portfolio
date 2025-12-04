@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechGyan - ज्ञान का डिजिटल सफर | Indian Tech Education</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #f59e0b;
+            --accent: #10b981;
+            --light: #f8fafc;
+            --dark: #1e293b;
+            --gray: #64748b;
+            --light-gray: #e2e8f0;
+            --border-radius: 8px;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #f1f5f9;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(to right, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .logo-hindi {
+            font-family: 'Noto Sans Devanagari', sans-serif;
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .logo-icon {
+            color: var(--secondary);
+            font-size: 2rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 0.5rem 0;
+            position: relative;
+        }
+        
+        nav a:hover {
+            color: var(--secondary);
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            bottom: 0;
+            left: 0;
+            transition: var(--transition);
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(30, 41, 59, 0.85), rgba(30, 41, 59, 0.9)), url('https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: var(--dark);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            border: 2px solid var(--secondary);
+        }
+        
+        .cta-button:hover {
+            background-color: transparent;
+            color: var(--secondary);
+        }
+        
+        /* Main Content Layout */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 2.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        /* Blog Posts */
+        .blog-posts h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+            border-left: 4px solid var(--primary);
+            padding-left: 1rem;
+        }
+        
+        .posts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .post-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .post-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .post-image {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+        
+        .post-content {
+            padding: 1.5rem;
+        }
+        
+        .post-category {
+            display: inline-block;
+            background-color: var(--light-gray);
+            color: var(--primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+        
+        .post-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: var(--dark);
+        }
+        
+        .post-excerpt {
+            color: var(--gray);
+            margin-bottom: 1.2rem;
+            font-size: 0.95rem;
+        }
+        
+        .post-meta {
+            display: flex;
+            justify-content: space-between;
+            color: var(--gray);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--light-gray);
+            padding-top: 1rem;
+        }
+        
+        .post-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .tag {
+            background-color: var(--light);
+            color: var(--gray);
+            padding: 0.3rem 0.7rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .tag:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            height: fit-content;
+        }
+        
+        .sidebar-section {
+            margin-bottom: 2rem;
+        }
+        
+        .sidebar-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.7rem;
+            border-bottom: 2px solid var(--light-gray);
+            color: var(--dark);
+        }
+        
+        .categories-list, .popular-tags {
+            list-style: none;
+        }
+        
+        .categories-list li, .popular-tags li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .categories-list a, .popular-tags a {
+            color: var(--dark);
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .categories-list a:hover, .popular-tags a:hover {
+            color: var(--primary);
+        }
+        
+        .category-count {
+            background-color: var(--light-gray);
+            color: var(--gray);
+            padding: 0.1rem 0.5rem;
+            border-radius: 10px;
+            font-size: 0.8rem;
+        }
+        
+        .popular-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        /* Comment System */
+        .comments-section {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            margin-top: 2rem;
+        }
+        
+        .comments-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+        
+        .comment-form {
+            background-color: var(--light);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 2rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--dark);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid var(--light-gray);
+            border-radius: var(--border-radius);
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+        
+        .submit-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .submit-btn:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        .comment {
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .comment:last-child {
+            border-bottom: none;
+        }
+        
+        .comment-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.8rem;
+        }
+        
+        .comment-author {
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .comment-date {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        .comment-body {
+            color: var(--dark);
+        }
+        
+        /* Indian Features */
+        .indian-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .indian-feature {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--light);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+        }
+        
+        .indian-feature i {
+            color: var(--secondary);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0 1.5rem;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary);
+            padding-left: 5px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid #334155;
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+        
+        .hindi-text {
+            font-family: 'Noto Sans Devanagari', sans-serif;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--primary-dark);
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: var(--shadow);
+            }
+            
+            nav ul.active {
+                display: flex;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .posts-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero {
+                padding: 3rem 0;
+            }
+            
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-laptop-code logo-icon"></i>
+                    <div>
+                        <h1>TechGyan</h1>
+                        <div class="logo-hindi">ज्ञान का डिजिटल सफर</div>
+                    </div>
+                </div>
+                
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+                <nav>
+                    <ul id="mainNav">
+                        <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+                        <li><a href="#"><i class="fas fa-th-large"></i> Categories</a></li>
+                        <li><a href="#"><i class="fas fa-tags"></i> Tags</a></li>
+                        <li><a href="#"><i class="fas fa-info-circle"></i> About</a></li>
+                        <li><a href="#"><i class="fas fa-envelope"></i> Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h2>Empowering India with Digital Knowledge</h2>
+            <p>Learn about the latest technology trends, programming tutorials, digital tools, and tech career guidance tailored for Indian learners and professionals.</p>
+            <a href="#" class="cta-button">Explore Latest Articles</a>
+            
+            <div class="indian-features">
+                <div class="indian-feature">
+                    <i class="fas fa-rupee-sign"></i>
+                    <span>Cost-effective Tech Solutions</span>
+                </div>
+                <div class="indian-feature">
+                    <i class="fas fa-globe-asia"></i>
+                    <span>Localized Content for India</span>
+                </div>
+                <div class="indian-feature">
+                    <i class="fas fa-language"></i>
+                    <span>Hindi & English Support</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="main-content">
+            <!-- Blog Posts Section -->
+            <div class="blog-posts">
+                <h2>Latest Tech Articles</h2>
+                
+                <div class="posts-grid">
+                    <!-- Post 1 -->
+                    <article class="post-card">
+                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Programming" class="post-image">
+                        <div class="post-content">
+                            <span class="post-category">Programming</span>
+                            <h3 class="post-title">Python for Beginners: A Complete Guide for Indian Students</h3>
+                            <p class="post-excerpt">Learn Python from scratch with examples relevant to Indian education system and job market. Perfect for college students and career changers.</p>
+                            
+                            <div class="post-tags">
+                                <a href="#" class="tag">Python</a>
+                                <a href="#" class="tag">Beginner</a>
+                                <a href="#" class="tag">Coding</a>
+                                <a href="#" class="tag">India</a>
+                            </div>
+                            
+                            <div class="post-meta">
+                                <span class="post-author"><i class="fas fa-user"></i> Rajesh Kumar</span>
+                                <span class="post-date"><i class="fas fa-calendar"></i> 15 Oct 2023</span>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <!-- Post 2 -->
+                    <article class="post-card">
+                        <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Digital India" class="post-image">
+                        <div class="post-content">
+                            <span class="post-category">Digital India</span>
+                            <h3 class="post-title">How UPI is Transforming Digital Payments in India</h3>
+                            <p class="post-excerpt">Explore the technology behind UPI and how it's making India a global leader in digital payments. Learn about security and future developments.</p>
+                            
+                            <div class="post-tags">
+                                <a href="#" class="tag">UPI</a>
+                                <a href="#" class="tag">Fintech</a>
+                                <a href="#" class="tag">Digital India</a>
+                                <a href="#" class="tag">Payments</a>
+                            </div>
+                            
+                            <div class="post-meta">
+                                <span class="post-author"><i class="fas fa-user"></i> Priya Sharma</span>
+                                <span class="post-date"><i class="fas fa-calendar"></i> 10 Oct 2023</span>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <!-- Post 3 -->
+                    <article class="post-card">
+                        <img src="https://images.unsplash.com/photo-1535223289827-42f1e9919769?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="AI" class="post-image">
+                        <div class="post-content">
+                            <span class="post-category">Artificial Intelligence</span>
+                            <h3 class="post-title">AI Career Opportunities in India: 2023 Guide</h3>
+                            <p class="post-excerpt">Discover the growing AI job market in India, required skills, and how to prepare for a career in artificial intelligence and machine learning.</p>
+                            
+                            <div class="post-tags">
+                                <a href="#" class="tag">AI</a>
+                                <a href="#" class="tag">Career</a>
+                                <a href="#" class="tag">Machine Learning</a>
+                                <a href="#" class="tag">Jobs</a>
+                            </div>
+                            
+                            <div class="post-meta">
+                                <span class="post-author"><i class="fas fa-user"></i> Amit Patel</span>
+                                <span class="post-date"><i class="fas fa-calendar"></i> 5 Oct 2023</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                
+                <!-- Comments Section -->
+                <div class="comments-section">
+                    <h3>Reader Comments (42)</h3>
+                    
+                    <!-- Comment Form -->
+                    <div class="comment-form">
+                        <h4>Leave a Comment</h4>
+                        <form id="commentForm">
+                            <div class="form-group">
+                                <label for="name">Name *</label>
+                                <input type="text" id="name" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email *</label>
+                                <input type="email" id="email" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="comment">Comment *</label>
+                                <textarea id="comment" class="form-control" rows="4" required></textarea>
+                            </div>
+                            <button type="submit" class="submit-btn">Post Comment</button>
+                        </form>
+                    </div>
+                    
+                    <!-- Comments List -->
+                    <div class="comments-list">
+                        <!-- Comment 1 -->
+                        <div class="comment">
+                            <div class="comment-header">
+                                <span class="comment-author">Vikram Singh <span class="hindi-text">(विक्रम सिंह)</span></span>
+                                <span class="comment-date">2 days ago</span>
+                            </div>
+                            <div class="comment-body">
+                                Great article! As a college student in Delhi, I found the Python guide extremely helpful. Could you write more about Django framework next?
+                            </div>
+                        </div>
+                        
+                        <!-- Comment 2 -->
+                        <div class="comment">
+                            <div class="comment-header">
+                                <span class="comment-author">Ananya Desai</span>
+                                <span class="comment-date">5 days ago</span>
+                            </div>
+                            <div class="comment-body">
+                                Thanks for covering UPI technology. As a small business owner in Mumbai, I've seen how digital payments have transformed our operations. Looking forward to more fintech articles!
+                            </div>
+                        </div>
+                        
+                        <!-- Comment 3 -->
+                        <div class="comment">
+                            <div class="comment-header">
+                                <span class="comment-author">Rohit Verma <span class="hindi-text">(रोहित वर्मा)</span></span>
+                                <span class="comment-date">1 week ago</span>
+                            </div>
+                            <div class="comment-body">
+                                The AI career guide is exactly what I needed. I'm from a tier 2 city and information like this is hard to find. Please consider adding regional language subtitles to your video tutorials.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <!-- Categories -->
+                <div class="sidebar-section">
+                    <h3><i class="fas fa-folder"></i> Categories</h3>
+                    <ul class="categories-list">
+                        <li><a href="#">Programming <span class="category-count">42</span></a></li>
+                        <li><a href="#">Web Development <span class="category-count">28</span></a></li>
+                        <li><a href="#">Mobile Apps <span class="category-count">19</span></a></li>
+                        <li><a href="#">Artificial Intelligence <span class="category-count">15</span></a></li>
+                        <li><a href="#">Digital India <span class="category-count">23</span></a></li>
+                        <li><a href="#">Startups & Business <span class="category-count">17</span></a></li>
+                        <li><a href="#">Cybersecurity <span class="category-count">12</span></a></li>
+                        <li><a href="#">Hardware & Gadgets <span class="category-count">21</span></a></li>
+                    </ul>
+                </div>
+                
+                <!-- Popular Tags -->
+                <div class="sidebar-section">
+                    <h3><i class="fas fa-tags"></i> Popular Tags</h3>
+                    <div class="popular-tags">
+                        <a href="#" class="tag">Python</a>
+                        <a href="#" class="tag">JavaScript</a>
+                        <a href="#" class="tag">React</a>
+                        <a href="#" class="tag">Startup</a>
+                        <a href="#" class="tag">UPI</a>
+                        <a href="#" class="tag">Digital India</a>
+                        <a href="#" class="tag">AI</a>
+                        <a href="#" class="tag">Mobile</a>
+                        <a href="#" class="tag">Web Development</a>
+                        <a href="#" class="tag">Career</a>
+                        <a href="#" class="tag">Hindi</a>
+                        <a href="#" class="tag">Tutorial</a>
+                    </div>
+                </div>
+                
+                <!-- Newsletter -->
+                <div class="sidebar-section">
+                    <h3><i class="fas fa-newspaper"></i> Tech Newsletter</h3>
+                    <p>Get weekly tech updates, tutorials and career tips delivered to your inbox.</p>
+                    <div class="form-group">
+                        <input type="email" class="form-control" placeholder="Enter your email">
+                    </div>
+                    <button class="submit-btn" style="width: 100%;">Subscribe</button>
+                </div>
+                
+                <!-- Indian Tech Events -->
+                <div class="sidebar-section">
+                    <h3><i class="fas fa-calendar-alt"></i> Indian Tech Events</h3>
+                    <ul class="categories-list">
+                        <li><a href="#">Bangalore Tech Summit - Nov 2023</a></li>
+                        <li><a href="#">Digital India Conference - Dec 2023</a></li>
+                        <li><a href="#">Startup India Expo - Jan 2024</a></li>
+                        <li><a href="#">AI & ML Conference - Feb 2024</a></li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>TechGyan</h3>
+                    <p>An educational technology blog focused on providing practical, relevant tech knowledge for Indian learners, students, and professionals.</p>
+                    <p class="hindi-text">भारतीय शिक्षार्थियों, छात्रों और पेशेवरों के लिए व्यावहारिक, प्रासंगिक तकनीकी ज्ञान प्रदान करने पर केंद्रित एक शैक्षिक प्रौद्योगिकी ब्लॉग।</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Categories</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Connect With Us</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+                        <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                        <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                        <li><a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                        <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
+                        <li><a href="#"><i class="fab fa-whatsapp"></i> WhatsApp Channel</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 TechGyan - ज्ञान का डिजिटल सफर. All rights reserved.</p>
+                <p>Made with ❤️ for Indian learners</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            mobileMenuBtn.innerHTML = mainNav.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Comment form submission
+        const commentForm = document.getElementById('commentForm');
+        const commentsList = document.querySelector('.comments-list');
+        
+        commentForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const comment = document.getElementById('comment').value;
+            
+            // Create new comment element
+            const newComment = document.createElement('div');
+            newComment.className = 'comment';
+            newComment.innerHTML = `
+                <div class="comment-header">
+                    <span class="comment-author">${name}</span>
+                    <span class="comment-date">Just now</span>
+                </div>
+                <div class="comment-body">${comment}</div>
+            `;
+            
+            // Insert new comment at the top of comments list
+            commentsList.insertBefore(newComment, commentsList.firstChild);
+            
+            // Reset form
+            commentForm.reset();
+            
+            // Show success message
+            alert('Thank you for your comment! It has been posted.');
+        });
+        
+        // Tag click event
+        const tags = document.querySelectorAll('.tag');
+        tags.forEach(tag => {
+            tag.addEventListener('click', (e) => {
+                e.preventDefault();
+                const tagName = tag.textContent;
+                alert(`Showing all articles tagged with: ${tagName}`);
+            });
+        });
+        
+        // Category click event
+        const categoryLinks = document.querySelectorAll('.categories-list a');
+        categoryLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const category = link.textContent.split(' ')[0];
+                alert(`Loading articles from category: ${category}`);
+            });
+        });
+    </script>
+</body>
+</html>
